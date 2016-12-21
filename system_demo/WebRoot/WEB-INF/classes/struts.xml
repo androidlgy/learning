@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+
+<struts>
+<package name="strutsqs" extends="struts-default" namespace="/">
+	<!--配置请求路径，与处理action类的关系  -->
+		<action name="GoLogin" class="cn.wistron.action.GoLogin">
+			<result name="input">/Login.jsp</result>
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="RoomAdminManager" class="cn.wistron.action.RoomAdminManager">
+		<result name="success">/RoomAdminManager.jsp</result>
+		</action>
+		<action name="RoomAdminUpdate" class="cn.wistron.action.RoomAdminUpdate">
+		<result name="success">/RoomAdminUpdate.jsp</result>
+		</action>
+		<action name="RoomAdminDel" class="cn.wistron.action.RoomAdminDel">
+		<result name="success" type="chain">RoomAdminManager</result>
+		</action>
+		<action name="RoomAdminAdd" class="cn.wistron.action.RoomAdminAdd">
+		<result name="success">/RoomAdminManager.jsp</result>
+		</action>
+		<action name="RoomAdminUpdateSave" class="cn.wistron.action.RoomAdminUpdateSave">
+		</action>
+		<action name="BuildingManager" class="cn.wistron.action.BuildingManager">
+		<result name="success">/BuildingManager.jsp</result>
+		</action>
+		<action name="BuildingAdd" class="cn.wistron.action.BuildingAdd">
+		    <result name="success">/BuildingAdd.jsp</result>
+		</action>
+		<action name="BuildingUpdate" class="cn.wistron.action.BuildingUpdate">
+		<result name="success">/BuildingUpdate.jsp</result>
+		</action>
+		<action name="UBManager" class="cn.wistron.action.UBManager">
+		<result name="success">/UBManager.jsp</result>
+		</action>
+		<action name="BuildingUpdateSave" class="cn.wistron.action.BuildingUpdateSave">
+		</action>
+		<action name="BuildingDel" class="cn.wistron.action.BuildingDel">
+		<result name="success" type="chain">BuildingManager</result>
+		</action>
+		<action name="BuildingAddSave" class="cn.wistron.action.BuildingAddSave">
+		<result name="success">/BuildingManager.jsp</result>
+		</action>
+		<action name="UBDel" class="cn.wistron.action.UBDel">
+		</action>
+		<action name="UBAddSave" class="cn.wistron.action.UBAddSave">
+		</action>
+		<action name="PasswordUpdateSave" class="cn.wistron.action.PasswordUpdateSave">
+		<result name="input">/PasswordUpdate.jsp</result>
+		</action>
+		<action name="Quit" class="cn.wistron.action.Quit">
+		<result name="success">/Login.jsp</result>
+		</action>
+		<action name="StorehouseManager" class="cn.wistron.action.StorehouseManager">
+		<result name="success">/StorehouseManager.jsp</result>
+		</action>
+		<action name="StorehouseAdd" class="cn.wistron.action.StorehouseAdd">
+		<result name="success">/StorehouseAdd.jsp</result>
+		</action>
+		<action name="StorehouseAddSave" class="cn.wistron.action.StorehouseAddSave">
+		</action>
+		<action name="StorehouseUpdate" class="cn.wistron.action.StorehouseUpdate">
+		<result name="success">/StorehouseUpdate.jsp</result></action>
+		<action name="StorehouseUpdateSave" class="cn.wistron.action.StorehouseUpdateSave">
+		</action>
+		<action name="StorehouseDel" class="cn.wistron.action.StorehouseDel">
+		<result name="success" type="chain">StorehouseManager</result>
+		</action>
+		<action name="SensorManager" class="cn.wistron.action.SensorManager">
+		<result name="success">/SensorManager.jsp</result>
+		</action>
+		<action name="SensorAdd" class="cn.wistron.action.SensorAdd">
+		<result name="success">/SensorAdd.jsp</result>
+		</action>
+		<action name="SensorAddSave" class="cn.wistron.action.SensorAddSave">
+		</action>
+		<action name="SensorUpdate" class="cn.wistron.action.SensorUpdate">
+		<result name="success">/SensorUpdate.jsp</result>
+		</action>
+		<action name="SensorUpdateSave" class="cn.wistron.action.SensorUpdateSave"></action>
+	    <action name="SensorDelete" class="cn.wistron.action.SensorDelete">
+	    <result name="success" type="chain">SensorManager</result>
+	    </action>
+	    <action name="MotionManager" class="cn.wistron.action.MotionManager">
+	    <result name="success">/MotionManager.jsp</result>
+	    </action>
+	    <action name="MotionAddSave" class="cn.wistron.action.MotionAddSave">
+	    </action>
+	    <action name="MotionUpdate" class="cn.wistron.action.MotionUpdate">
+	    <result name="success">/MotionUpdate.jsp</result>
+	    </action>
+	    <action name="MotionUpdateSave" class="cn.wistron.action.MotionUpdateSave">
+	    </action>
+	    <action name="MotionDelete" class="cn.wistron.action.MotionDelete">
+	    <result name="success" type="chain">MotionManager</result>
+	    </action>
+	    <action name="SMManager" class="cn.wistron.action.SMManager">
+	    <result name="success">/SMManager.jsp</result>
+	    </action>
+	    <action name="SMAddSave" class="cn.wistron.action.SMAddSave">
+	    </action>
+	    <action name="SMDel" class="cn.wistron.action.SMDel">
+	    <result name="success" type="chain">SMManager</result>
+	    </action>
+	    <action name="SMUpdate" class="cn.wistron.action.SMUpdate">
+	    <result name="success">/SMUpdate.jsp</result>
+	    </action>
+	    <action name="SMUpdateSave" class="cn.wistron.action.SMUpdateSave">
+	    </action>
+	    <action name="HttpTest" class="cn.wistron.action.HttpTest"></action>
+	  <!--   <action name="ParaManager" class="cn.wistron.action.ParaManager">
+	        <result name="success">/ParaManager.jsp</result>
+	    </action> -->
+	     <action name="HttpTest1" class="cn.wistron.action.HttpTest1"></action>
+	    <action name="ParaManager" class="cn.wistron.action.ParaManager">
+	        <result name="success">/ParaManager.jsp</result>
+	    </action>
+	    <action name="MuseumManager" class="cn.wistron.action.MuseumManager">
+	       <result name="success">/MuseumManager.jsp</result>
+	    </action>
+	    <action name="MuseumAddSave" class="cn.wistron.action.MuseumAddSave">
+	    </action>
+	    <action name="MuseumUpdate" class="cn.wistron.action.MuseumUpdate">
+	        <result name="success">/MuseumUpdate.jsp</result>
+	    </action>
+	    <action name="MuseumUpdateSave" class="cn.wistron.action.MuseumUpdateSave">
+	    </action>
+	    <action name="MuseumDel" class="cn.wistron.action.MuseumDel">  
+	    </action>
+	    <action name="MuseumAdminManager" class="cn.wistron.action.MuseumAdminManager">
+	        <result name="success">/MuseumAdminManager.jsp</result>
+	    </action>
+	    <action name="MuseumAdminUpdate" class="cn.wistron.action.MuseumAdminUpdate">
+	        <result name="success">/MuseumAdminUpdate.jsp</result>
+	    </action>
+	    <action name="MuseumAdminAdd" class="cn.wistron.action.MuseumAdminAdd">
+	    </action>
+	    <action name="MuseumAdminUpdateSave" class="cn.wistron.action.MuseumAdminUpdateSave">
+	    </action>
+	    <action name="MuseumAdminDel" class="cn.wistron.action.MuseumAdminDel">
+	        <result name="success" type="chain">MuseumAdminManager</result>
+	    </action>
+	    <action name="MmManager" class="cn.wistron.action.MmManager">
+	        <result name="success">/MmManager.jsp</result>
+	    </action>
+	    <action name="MmAddSave" class="cn.wistron.action.MmAddSave">
+	    </action>
+	    <action name="MmDel" class="cn.wistron.action.MmDel">
+	         <result name="success" type="chain">MmManager</result>
+	    </action>
+	    <action name="MyBuildingManager" class="cn.wistron.action.MyBuildingManager">
+	        <result name="success">/MyBuildingManager.jsp</result>
+	    </action>
+	    <action name="MyBuildingUpdate" class="cn.wistron.action.MyBuildingUpdate">
+	        <result name="success">/MyBuildingUpdate.jsp</result>
+	    </action>
+	    <action name="MyBuildingUpdateSave" class="cn.wistron.action.MyBuildingUpdateSave">
+	    </action>
+	    <action name="MyBuildingDel" class="cn.wistron.action.MyBuildingDel"></action>
+	    <action name="MyStorehouseManager" class="cn.wistron.action.MyStorehouseManager">
+	        <result name="success">/MyStorehouseManager.jsp</result>
+	    </action>
+	    <action name="MyStorehouseAdd" class="cn.wistron.action.MyStorehouseAdd">
+	        <result name="success">/MyStorehouseAdd.jsp</result>
+	    </action>
+	    <action name="MyStorehouseAddSave" class="cn.wistron.action.MyStorehouseAddSave"></action>
+	    <action name="MyStorehouseUpdate" class="cn.wistron.action.MyStorehouseUpdate">
+	        <result name="success">/MyStorehouseUpdate.jsp</result>
+	    </action>
+	    <action name="MyStorehouseUpdateSave" class="cn.wistron.action.MyStorehouseUpdateSave">
+	    </action>
+	    <action name="MySensorManager" class="cn.wistron.action.MySensorManager">
+	        <result name="success">/MySensorManager.jsp</result>
+	    </action>
+	    <action name="MySensorAdd" class="cn.wistron.action.MySensorAdd">
+	        <result name="success">/MySensorAdd.jsp</result>
+	    </action>
+	    <action name="MySensorAddSave" class="cn.wistron.action.MySensorAddSave">
+	    </action>
+	    <action name="MySensorUpdate" class="cn.wistron.action.MySensorUpdate">
+	        <result name="success">/MySensorUpdate.jsp</result>
+	    </action>
+	    <action name="MySensorUpdateSave" class="cn.wistron.action.MySensorUpdateSave">
+	    </action>
+	    <action name="MySensorDelete" class="cn.wistron.action.MySensorDelete">
+	    <result name="success" type="chain">MySensorManager</result>
+	    </action>
+	    <action name="MySMManager" class="cn.wistron.action.MySMManager">
+	        <result name="success">/MySMManager.jsp</result>
+	    </action>
+	    <action name="MySMAddSave" class="cn.wistron.action.MySMAddSave">
+	    </action>
+	    <action name="MySMDel" class="cn.wistron.action.MySMDel">
+	    <result name="success" type="chain">MySMManager</result>
+	    </action>
+	    <action name="MySMUpdate" class="cn.wistron.action.MySMUpdate">
+	    <result name="success">/MySMUpdate.jsp</result>
+	    </action>
+	    <action name="MySMUpdateSave" class="cn.wistron.action.MySMUpdateSave">
+	    </action>
+	    <action name="MyParaManager" class="cn.wistron.action.MyParaManager">
+	        <result name="success">/MyParaManager.jsp</result>
+	    </action>
+</package>
+</struts>
+
+
+
