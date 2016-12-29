@@ -8,7 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <title>Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Paix Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
@@ -61,11 +60,11 @@ return re.test(str);
 			<div class="navigation">
 				 <span class="menu"></span> 
 					<ul class="navig">
-						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/index.html"  class="active hvr-bounce-to-bottom">Home</a></li>
-						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/about.html" class="hvr-bounce-to-bottom">About</a></li>
-						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/services.html" class="hvr-bounce-to-bottom">Services</a></li>
-						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/typo.html" class="hvr-bounce-to-bottom">Typo</a></li>
-						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/contact.html" class="hvr-bounce-to-bottom">Contact</a></li>
+						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/index.html"  class="active hvr-bounce-to-bottom">主页</a></li>
+						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/about.html" class="hvr-bounce-to-bottom">系统介绍</a></li>
+						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/services.html" class="hvr-bounce-to-bottom">服务</a></li>
+						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/typo.html" class="hvr-bounce-to-bottom">关于泰德</a></li>
+						<li><a href="../Downloads/cpts_292_lv/cpts_292_lv/contact.html" class="hvr-bounce-to-bottom">联系我们</a></li>
 					</ul>
 			</div>
 				<div class="clearfix"></div>
@@ -84,8 +83,9 @@ return re.test(str);
 	<div class="banner">
 		<div class="container">
 			<div class="banner-top">
+			<h1>系统登陆</h1>
 				<form name="form1" action="GoLogin.action" method="post" onSubmit="return mycheck()">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <table style="border-collapse:separate; border-spacing:10px;">
                 <tr>
                   <td height="30" colspan="2" align="center" class="STYLE2"><span style="color:red;">
                     <%if(request.getAttribute("Msg")!=null){%>
@@ -93,25 +93,27 @@ return re.test(str);
                     <%}%>
                   </span></td>
                   </tr>
-                <tr>
-                  <td height="30" align="right" class="STYLE2">身份：</td>
-                  <td align="left"><select name="Type" id="Type">
+                <tr class="bnr-one">
+                  <td class="bnr-left">身份：</td>
+                  <td class="bnr-right"><select name="Type" id="Type">
                     <option value="">请选择</option>
                     <option value="系统管理员">系统管理员</option>
                     <option value="博物馆管理员">档案馆管理员</option>
                   </select></td>
                   </tr>
-                <tr>
-                  <td width="37%" height="30" align="right" class="STYLE2">用户名：</td>
-                  <td width="300" align="left"><input type="text" name="Username" id="Username" class="text1" /></td>
+                <tr class="bnr-one">
+                  <td  class="bnr-left">用户名：</td>
+                  <td class="bnr-right"><input type="text" name="Username" id="Username" class="text1" /></td>
                   </tr>
-                <tr>
-                  <td height="30" align="right" class="STYLE2">密码：</td>
-                  <td align="left"><input type="password" name="Password" id="Password" class="text1" /></td>
+                <tr class="bnr-one">
+          
+                  <td height="30"  class="bnr-left" width="37%">密码：</td>
+                  <td class="bnr-right"><input type="password" name="Password" id="Password" class="text1" /></td>
+                  <td class="bnr-right"><a>忘记密码</a></td>
                   </tr>
-                <tr>
-                  <td height="30" colspan="2" align="center"><label>
-                    <input type="submit" name="button" id="button" value="登录">
+                <tr class="bnr-one">
+                  <td  colspan="2" align="center"><label>
+                    <input class="bnr-btn" type="submit" name="button" id="button" value="登录">
                   </label></td>
                   </tr>
               </table>
