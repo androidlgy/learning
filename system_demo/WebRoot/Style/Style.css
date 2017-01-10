@@ -7,7 +7,7 @@ body {
 
 body,td,th {
 	font-family: '宋体';/* 字体名称。按优先顺序排列。以逗号隔开。如果字体名称包含空格或中文，则应使用引号括起  */
-	font-size: 13px;/*定义字体大小  */
+	font-size: 14px;/*定义字体大小  */
 	
 }
 form {

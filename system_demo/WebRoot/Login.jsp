@@ -83,7 +83,7 @@ return re.test(str);
 	<div class="banner">
 		<div class="container">
 			<div class="banner-top">
-			<h1>系统登陆</h1>
+			<h1>系统登录</h1>
 				<form name="form1" action="GoLogin.action" method="post" onSubmit="return mycheck()">
               <table style="border-collapse:separate; border-spacing:10px;">
                 <tr>
@@ -94,7 +94,7 @@ return re.test(str);
                   </span></td>
                   </tr>
                 <tr class="bnr-one">
-                  <td class="bnr-left">身份：</td>
+                  <td class="bnr-left"><p>身份：</p></td>
                   <td class="bnr-right"><select name="Type" id="Type">
                     <option value="">请选择</option>
                     <option value="系统管理员">系统管理员</option>
@@ -102,12 +102,12 @@ return re.test(str);
                   </select></td>
                   </tr>
                 <tr class="bnr-one">
-                  <td  class="bnr-left">用户名：</td>
+                  <td  class="bnr-left"><p>用户名：</p></td>
                   <td class="bnr-right"><input type="text" name="Username" id="Username" class="text1" /></td>
                   </tr>
                 <tr class="bnr-one">
           
-                  <td height="30"  class="bnr-left" width="37%">密码：</td>
+                  <td height="30"  class="bnr-left" width="37%"><p>密码：</p></td>
                   <td class="bnr-right"><input type="password" name="Password" id="Password" class="text1" /></td>
                   <td class="bnr-right"><a>忘记密码</a></td>
                   </tr>
@@ -122,8 +122,6 @@ return re.test(str);
 		</div>
 	</div>
 	<!--end-banner-->
-	
-    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 	<!--FlexSlider-->
 	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 	<script defer src="js/jquery.flexslider.js"></script>
