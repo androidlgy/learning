@@ -36,7 +36,7 @@ public class HttpTest1 extends ActionSupport {
 		response=ServletActionContext.getResponse();
 		//解决乱码
 		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		response.setContentType("application/x-www-form-urlencoded\r\n;charset=utf-8");
 		//获取输出
 		ServletOutputStream out =response.getOutputStream();
 		String[] split = value.split(";");

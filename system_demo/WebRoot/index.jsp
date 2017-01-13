@@ -12,6 +12,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <link href="Style/Style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Paix Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<script src="js/jquery.min.js"></script>
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
 </head>
  <script type="text/javascript">
 <!--
@@ -31,15 +41,23 @@ document.getElementById("time").innerText = msg;
 //-->
 </script> 
 <body>
-<center>
   <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
-    <tr>
-      <td height="150" background="Images/head.jpg" style="color:#06F; font-size:13px; font-weight:bolder; padding-right:50px;"><a>联系我们</a></td>
+  <tr height="10%">
+ 	<div class="header" id="home">
+		<div class="container">
+			<div class="head">
+			<div class="logo">
+				<a href="../Downloads/cpts_292_lv/cpts_292_lv/index.html"><img src="Images/logo.png" alt="" /></a>
+			</div>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+		</div>	
+ </tr>
+    <tr height="1%">
+      <td background="Images/MenuBg.jpg" align="right">&nbsp;当前用户：${sessionScope.Manager_Username}</td>
     </tr>
-    <tr>
-      <td height="15" background="Images/MenuBg.jpg" align="right">&nbsp;当前用户：${sessionScope.Manager_Username}</td>
-    </tr>
-    <tr>
+    <tr height="80%">
       <td height="100%" align="center" valign="top">
       <table width="80%" border="0" cellspacing="0" cellpadding="0" height="100%">
         <tr>
@@ -52,14 +70,15 @@ document.getElementById("time").innerText = msg;
       </table>
       </td>
     </tr> 
-    <tr>
+    <tr height="1%">
       <td height="15" background="Images/bootBg.jpg">&nbsp;</td>
     </tr>
   </table>
-<span id="time"></span>
-</center>
+  <span id="time"></span>
+  </td>
+  </tr>
 
-
+<tr height="8%">
 	<!--start-footer-->
 	<div class="footer">
 		<div class="container">
@@ -98,6 +117,7 @@ document.getElementById("time").innerText = msg;
 		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	</div>
 	<!--end-footer-->
+	</tr>
 </body>
 </html>
 
