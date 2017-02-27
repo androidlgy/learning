@@ -5,26 +5,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
     <title>库房环境监测系统</title>
-    <base href="<%=basePath%>">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link href="Style/Style.css" rel="stylesheet" type="text/css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Paix Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<script src="js/jquery.min.js"></script>
-<!---- start-smoth-scrolling---->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery蓝色二级导航菜单 - huiyi8素材</title>
+<link href="css/Article.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/Article.js"></script>
  <script type="text/javascript">
-<!--
 setInterval("showTime()",1000);
 
 function showTime()
@@ -38,86 +27,106 @@ msg += wk[date.getDay()]+" ";
 msg += date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
 document.getElementById("time").innerText = msg;
 }
-//-->
-</script> 
+</script>
+</head> 
 <body>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
-  <tr height="10%">
- 	<div class="header" id="home">
-		<div class="container">
-			<div class="head">
-			<div class="logo">
-				<a href="../Downloads/cpts_292_lv/cpts_292_lv/index.html"><img src="Images/logo.png" alt="" /></a>
-			</div>
-				<div class="clearfix"></div>
-			</div>
-			</div>
-		</div>	
- </tr>
-    <tr height="1%">
-      <td background="Images/MenuBg.jpg" align="right">&nbsp;当前用户：${sessionScope.Manager_Username}</td>
-    </tr>
-    <tr height="80%">
-      <td height="100%" align="center" valign="top">
-      <table width="80%" border="0" cellspacing="0" cellpadding="0" height="100%">
-        <tr>
-         
-          <td width="12%" height="100%" align="left" valign="top" background="Images/leftbg.jpg">
-           <%@ include file="Left.jsp"%>
-          </td>
-          <td width="88%" align="center" valign="middle" bgcolor="#F6F9FE"><h2>欢迎使用档案库房环境监测系统</h2></td>       
-        </tr>
-      </table>
-      </td>
-    </tr> 
-    <tr height="1%">
-      <td height="15" background="Images/bootBg.jpg">&nbsp;</td>
-    </tr>
-  </table>
-  <span id="time"></span>
+<center>
+  <table  height="30%" width="80%" >
+  <tr>
+  <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
+  <br>
+  <h4 style="font-weight: bold;margin-left: 150px; font-size: 100%">www.tdaxdakfxxw.com</h4>
   </td>
   </tr>
-
-<tr height="8%">
-	<!--start-footer-->
-	<div class="footer">
-		<div class="container">
-		<div class="touch-top heading">
-				<h3>FOLLOW US</h3>
-			</div>
-			<div class="touch-bottom">
-				<p>756 gt globel Place, CD-Road,M 07 435.</p>
-				<h6 >1 234 567 9871 , 800-2345-679</h6>
-				<p>purus tincidunt egestas</p>
-				<ul>
-					<li><a href="#"><span class="fb"> </span></a></li>
-					<li><a href="#"><span class="twit"> </span></a></li>
-					<li><a href="#"><span class="google"> </span></a></li>
-				</ul>
-			</div>
-			<div class="footer-top">
-				<p class="footer-class">Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网站模板" target="_blank">网站模板</a></p>
-			</div>
-		</div>
-		<script type="text/javascript">
-									$(document).ready(function() {
-										/*
-										var defaults = {
-								  			containerID: 'toTop', // fading element id
-											containerHoverID: 'toTopHover', // fading element hover id
-											scrollSpeed: 1200,
-											easingType: 'linear' 
-								 		};
-										*/
-										
-										$().UItoTop({ easingType: 'easeOutQuart' });
-										
-									});
-								</script>
-		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-	</div>
-	<!--end-footer-->
-	</tr>
+  </table>
+  <div id="Top" style="width: 80%; height: 15%">
+  <div class="Toolbar1">
+    <div class="CentreBox">
+      <div class="Logo"><a href="http://www.baidu.com" target="_self"><img src="Images/MYLOGO.png" alt="网站名称"/></a></div>
+      <div class="Menu">
+        <ul class="List1">
+          <li class="Select"><a href="#" target="_blank">首页</a></li>
+          <li><a href="#" target="_blank">用户管理</a></li>
+          <li><a href="#" target="_blank">档案馆管理</a></li>
+          <li><a href="#" target="_blank">设备管理</a></li>
+          <li><a href="#" target="_blank">数据管理</a></li>
+          
+ 
+        </ul>
+        <ul class="List2">
+          <li><a href="#" target="_blank">企业微博</a></li>
+          <li><a href="#" target="_blank">关于系统</a></li>
+        </ul>
+         
+      </div>
+      <div class="UserInfo">
+        <div class="NickName"><span class="PicMiddle"><a href="http://www.baidu.com" target="_self"><img src="Images/Vip.png" alt="VIP用户" /></a></span>&nbsp;&nbsp;<a href="http://www.baidu.com" target="_self">当前用户：${sessionScope.Manager_Username}</a></div>
+      </div>
+      <div class="Setting"><a href="http://www.baidu.com" target="_self"></a></div>
+      <div class="Message"><a href="http://www.baidu.com" target="_self"></a></div>
+    </div>
+  </div>
+  <div class="Toolbar2">
+    <div class="CentreBox">
+      <div class="Menu">
+        <ul>
+          <li class="Select"><a href="#" target="_blank">火灾报警日志</a></li>
+          <li><a href="#" target="_blank">关于系统</a></li>
+        </ul>
+      </div>
+      <div class="Menu Hide">
+        <ul>
+        <%if(session.getAttribute("type").toString().equals("1")){%>
+          <li class="Select"><a href="#" target="_blank">系统管理员管理</a></li>
+          <li><a href="#" target="_blank">档案馆管理员管理</a></li>
+          <li><a href="#" target="_blank">楼宇管理员管理</a></li>
+          <li><a href="#" target="_blank">库房管理员管理</a></li>
+          <li><a href="#" target="_blank">修改密码</a></li>
+          <%}%>
+          <%if(session.getAttribute("type").toString().equals("2")){%> 
+           <li><a href="#" target="_blank">楼宇管理员管理</a></li>
+          <li><a href="#" target="_blank">库房管理员管理</a></li>
+          <li><a href="#" target="_blank">修改密码</a></li>
+          <%}%>
+          <li><a href="Quit.action" onclick="return confirm('确定要退出系统吗？')">退出系统</a></li>
+        </ul>
+      </div>
+      <div class="Menu Hide">
+        <ul>
+          <li class="Select"><a href="#" target="_blank">楼宇管理</a></li>
+          <li><a href="#" target="_blank">库房管理</a></li>
+        </ul>
+      </div>
+      <div class="Menu Hide">
+        <ul>
+          <li class="Select"><a href="#" target="_blank">添加设备</a></li>
+          <li><a href="#" target="_blank">修改设备</a></li>
+          <li><a href="#" target="_blank">查看设备</a></li>
+        </ul>
+      </div>
+      <div class="Menu Hide">
+        <ul>
+          <li class="Select"><a href="#" target="_blank">显示数据</a></li>
+          <li><a href="#" target="_blank">报警管理</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+ <table>
+ <tr>
+ <td></td>
+ </tr>
+ </table>
+    <table>
+ 
+    <tr height="1%">
+      <td background="Images/bootBg.jpg">&nbsp;</td>
+    </tr>
+  	
+  </table >
+  </center>
+    <span id="time"></span>
 </body>
 </html>
 

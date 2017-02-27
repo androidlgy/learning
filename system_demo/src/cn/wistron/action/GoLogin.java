@@ -58,7 +58,7 @@ public class GoLogin extends ActionSupport {
 			}
 			
 		}
-		else if(Type.equals("博物馆管理员")){
+		else if(Type.equals("档案馆管理员")){
 				if(null==new ManagerDao().CheckLogin(Username, Password)){
 					Msg="用户名或密码错误";
 					return INPUT;
