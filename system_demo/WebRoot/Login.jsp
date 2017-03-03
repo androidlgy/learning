@@ -79,9 +79,9 @@ return re.test(str);
                   <td height="30" align="right" class="STYLE2">密码：</td>
                   <td align="left"><input type="password" name="Password" id="Password" class="text1" /></td>
                   </tr>
-                   <tr>
+                 <!--   <tr>
                         <td align="center" colspan="2" ><a href="***" >忘记密码</a></td>
-                  </tr>
+                  </tr> -->
                   
                 <tr>
                   <td height="30" colspan="2" align="center"><label>
