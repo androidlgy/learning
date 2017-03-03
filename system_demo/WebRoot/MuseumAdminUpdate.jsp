@@ -80,13 +80,11 @@ document.getElementById("time").innerText = msg;
       <div class="Logo"><a href="index.jsp" target="_self"><img src="Images/MYLOGO.png" alt="网站名称"/></a></div>
       <div class="Menu">
         <ul class="List1">
-          <li class="Select"><a href="index.jsp" target="_blank">首页</a></li>
-          <li><a href="index.jsp" target="_blank">用户管理</a></li>
-          <li><a href="index.jsp" target="_blank">档案馆管理</a></li>
-          <li><a href="index.jsp" target="_blank">设备管理</a></li>
-          <li><a href="index.jsp" target="_blank">数据管理</a></li>
-          
- 
+<li class="Select"><a href="CopyOfParaManager.action" target="_self">首页</a></li>
+          <li><a href="CopyOfParaManager.action" target="_self">用户管理</a></li>
+          <li><a href="CopyOfParaManager.action" target="_self">档案馆管理</a></li>
+          <li><a href="CopyOfParaManager.action" target="_self">设备管理</a></li>
+          <li><a href="CopyOfParaManager.action" target="_self">数据管理</a></li>
         </ul>
         <ul class="List2">
           <li><a href="#" target="_blank">企业微博</a></li>
@@ -172,7 +170,7 @@ document.getElementById("time").innerText = msg;
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%"><input name="Manager_ID" type="text" class="noshow" id="Manager_ID" value="<s:property value='bean.Manager_ID'/>"></td>
+                    <td width="67%"><input name="Manager_ID" type="text" class="noshow" id="Manager_ID" value="<s:property value='bean.Manager_ID'/>" ></td>
                   </tr>
                   <tr>
                     <td height="30" align="right"><span style="color:red;">*</span>用户名：</td>

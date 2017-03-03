@@ -13,6 +13,7 @@ a img{
 a{
 	text-decoration:none;
 }
+.noshow{ display:none;}/* none： 隐藏对象。与visibility属性的hidden值不同，其不为被隐藏的对象保留其物理空间  */
 .PicMiddle {
 	vertical-align:middle;
 }
@@ -178,3 +179,13 @@ a{
 	background-repeat: no-repeat;
 	background-position: center center;
 }
+/* 设置超链接的样式 */
+A:link{   COLOR:#333;   TEXT-DECORATION:   none;   }  /*未访问的链接   TEXT-DECORATION:none无下划线  */
+A:visited{   COLOR: #333;   TEXT-DECORATION:   none;    } /*已访问的链接  */  
+A:active{   COLOR: #333;   TEXT-DECORATION:   none;  } /* 被选择的链接 */  
+A:hover{   COLOR:#FF3300;   TEXT-DECORATION:   none; }   /*当鼠标悬停在连接上   红色*/
+/* <' text-decoration-line '>： 指定文本装饰的种类。相当于CSS2.1的 <' text-decoration '> 属性，可取值：none | underline | overline | line-through | blink  */
+A.left1:link{   COLOR:#2160c1; font-weight:bolder;  TEXT-DECORATION:   none;   }   
+A.left1:visited{   COLOR:   #2160c1; font-weight:bolder; TEXT-DECORATION:   none;    }   
+A.left1:active{   COLOR:   #2160c1;  font-weight:bolder; TEXT-DECORATION:   none;  }   
+A.left1:hover{   COLOR:#FF3300;  font-weight:bolder; TEXT-DECORATION:   none; }   

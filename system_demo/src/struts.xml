@@ -12,6 +12,9 @@
 			<result name="input">/Login.jsp</result>
 			<result name="success">/index.jsp</result>
 		</action>
+		<action name="CopyOfParaManager" class="cn.wistron.action.CopyOfParaManager">
+		    <result name="success">/index.jsp</result>
+		</action>
 		<action name="RoomAdminManager" class="cn.wistron.action.RoomAdminManager">
 		<result name="success">/RoomAdminManager.jsp</result>
 		</action>

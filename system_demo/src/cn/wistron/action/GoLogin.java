@@ -122,6 +122,15 @@ public class GoLogin extends ActionSupport {
 					session.setAttribute("id", Manager_ID);
 					session.setAttribute("type", "2");
 				    session.setAttribute("Manager_Username", Username);
+				    String strwhere="1=1";
+				    if(!(isInvalid(SearchKey))){
+				    	strwhere+=" and "+SearchRow+"='"+SearchKey+"'";
+				    }
+				    if(!isInvalid(Storehouse_BuildingID)){
+				    	strwhere+=" and Storehouse_BuildingID="+Storehouse_BuildingID;
+				    }
+				    blist = new BuildingDao().getList("", "Building_Name");
+					list=new SensorDao().getList(strwhere, "Sensor_Name");
 					return SUCCESS;
 				}
 			}
