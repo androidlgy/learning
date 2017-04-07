@@ -56,16 +56,25 @@ public class SensorUpdate extends ActionSupport {
 				//创建session对象
 				HttpSession session = ServletActionContext.getRequest().getSession();
 				//验证是否正常登陆
-				if(session.getAttribute("id")==null){
+				if(session.getAttribute("type")==null){
 					out.print("<script language='javascript'>alert('请重新登陆！');window.location='Login.jsp';</script>");
 					out.flush();
 					out.close();
 					return null;
 				}
+				else if(session.getAttribute("type").equals("1")){
 				//查询所有
 				 sbean = new SensorDao().GetBean(Integer.parseInt(Sensor_ID));
 				 slist = new StorehouseDao().getList("", "Storehouse_Name");
-		         return SUCCESS;
+		         
+				}
+				else if(session.getAttribute("type").equals("2")){
+			     sbean = new SensorDao().GetBean(Integer.parseInt(Sensor_ID));
+			     StorehouseBean bean = new StorehouseDao().getBean(sbean.getSensor_StorehouseID());
+			     slist = new StorehouseDao().getList("Storehouse_BuildingID='"+bean.getStorehouse_BuildingID()+"'", "Storehouse_ID");
+					
+				}
+				return SUCCESS;
 			}
 			
 	

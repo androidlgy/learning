@@ -8,6 +8,7 @@
 <struts>
 <package name="strutsqs" extends="struts-default" namespace="/">
 	<!--配置请求路径，与处理action类的关系  -->
+	<action name="HttpTest1" class="cn.wistron.action.HttpTest1"></action>
 		<action name="GoLogin" class="cn.wistron.action.GoLogin">
 			<result name="input">/Login.jsp</result>
 			<result name="success">/index.jsp</result>
@@ -15,19 +16,19 @@
 		<action name="CopyOfParaManager" class="cn.wistron.action.CopyOfParaManager">
 		    <result name="success">/index.jsp</result>
 		</action>
-		<action name="RoomAdminManager" class="cn.wistron.action.RoomAdminManager">
-		<result name="success">/RoomAdminManager.jsp</result>
+		<action name="BuildingAdminManager" class="cn.wistron.action.BuildingAdminManager">
+		<result name="success">/BuildingAdminManager.jsp</result>
 		</action>
-		<action name="RoomAdminUpdate" class="cn.wistron.action.RoomAdminUpdate">
-		<result name="success">/RoomAdminUpdate.jsp</result>
+		<action name="BuildingAdminUpdate" class="cn.wistron.action.BuildingAdminUpdate">
+		<result name="success">/BuildingAdminUpdate.jsp</result>
 		</action>
-		<action name="RoomAdminDel" class="cn.wistron.action.RoomAdminDel">
-		<result name="success" type="chain">RoomAdminManager</result>
+		<action name="BuildingAdminDel" class="cn.wistron.action.BuildingAdminDel">
+		<result name="success" type="chain">BuildingAdminManager</result>
 		</action>
-		<action name="RoomAdminAdd" class="cn.wistron.action.RoomAdminAdd">
-		<result name="success">/RoomAdminManager.jsp</result>
+		<action name="BuildingAdminAdd" class="cn.wistron.action.BuildingAdminAdd">
+		<result name="success">/BuildingAdminManager.jsp</result>
 		</action>
-		<action name="RoomAdminUpdateSave" class="cn.wistron.action.RoomAdminUpdateSave">
+		<action name="BuildingAdminUpdateSave" class="cn.wistron.action.BuildingAdminUpdateSave">
 		</action>
 		<action name="BuildingManager" class="cn.wistron.action.BuildingManager">
 		<result name="success">/BuildingManager.jsp</result>
@@ -119,7 +120,7 @@
 	  <!--   <action name="ParaManager" class="cn.wistron.action.ParaManager">
 	        <result name="success">/ParaManager.jsp</result>
 	    </action> -->
-	     <action name="HttpTest1" class="cn.wistron.action.HttpTest1"></action>
+	    
 	    <action name="ParaManager" class="cn.wistron.action.ParaManager">
 	        <result name="success">/ParaManager.jsp</result>
 	    </action>
@@ -209,6 +210,27 @@
 	    <action name="MyParaManager" class="cn.wistron.action.MyParaManager">
 	        <result name="success">/MyParaManager.jsp</result>
 	    </action>
+	    <action name="StorehouseAdminManager" class="cn.wistron.action.StorehouseAdminManager">
+	        <result name="success">/StorehouseAdminManager.jsp</result>
+	    </action>
+	    <action name="StorehouseAdminAdd" class="cn.wistron.action.StorehouseAdminAdd">
+	        <result name="success">/StorehouseAdminManager.jsp</result>
+	    </action>
+	    <action name="StorehouseAdminUpdate" class="cn.wistron.action.StorehouseAdminUpdate">
+	        <result name="success">/StorehouseAdminUpdate.jsp</result>
+	    </action>
+	    <action name="StorehouseAdminUpdateSave" class="cn.wistron.action.StorehouseAdminUpdateSave"></action>
+	    <action name="StorehouseAdminDel" class="cn.wistron.action.StorehouseAdminDel">
+	        <result name="success" type="chain">StorehouseAdminManager</result>
+	    </action>
+	    <action name="TSManager" class="cn.wistron.action.TSManager">
+	        <result name="success">/TSManager.jsp</result>
+	    </action>
+	    <action name="TSAddSave" class="cn.wistron.action.TSAddSave">
+		</action>
+		<action name="TSDel" class="cn.wistron.action.TSDel">
+		    <result name="success" type="chain">TSManager</result>
+		</action>
 </package>
 </struts>
 

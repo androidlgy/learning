@@ -28,14 +28,20 @@ public class SensorDelete extends ActionSupport {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		if(session.getAttribute("id")==null){
+		if(session.getAttribute("type")==null){
 			out.print("<script language='javascript'>alter('登陆验证失败,请重新登陆');window.location='Login.jsp';</script>");
 			out.flush();
 			out.close();
 			return null;
 		}
+		else if(session.getAttribute("type").equals("1")){
 		new SensorDao().Delete("Sensor_ID="+Integer.parseInt(Sensor_ID));
 		out.print("<script language='javascript'>alter('删除成功');window.location='SensorManager.action';</script>");
+		}
+		else if(session.getAttribute("type").equals("2")){
+			new SensorDao().Delete("Sensor_ID="+Integer.parseInt(Sensor_ID));
+			out.print("<script language='javascript'>alter('删除成功');window.location='SensorManager.action';</script>");
+		}
 		return SUCCESS;
 		
 	}

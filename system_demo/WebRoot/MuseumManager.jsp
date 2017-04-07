@@ -1,17 +1,16 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page contentType="text/html;charset=utf-8"%> 
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
-
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
     <title>库房环境监测系统</title>
-    <base href="<%=basePath%>">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/Article.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/Article.js"></script>
@@ -41,89 +40,9 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-  <div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%">
   <div class="Toolbar1">
-    <div class="CentreBox">
-      <div class="Logo"><a href="index.jsp" target="_self"><img src="Images/MYLOGO.png" alt="网站名称"/></a></div>
-      <div class="Menu">
-        <ul class="List1">
-<li class="Select"><a href="CopyOfParaManager.action" target="_self">首页</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">用户管理</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">档案馆管理</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">设备管理</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">数据管理</a></li>
-        </ul>
-        <ul class="List2">
-          <li><a href="#" target="_blank">企业微博</a></li>
-          <li><a href="#" target="_blank">关于系统</a></li>
-        </ul>
-         
-      </div>
-      <div class="UserInfo">
-        <div class="NickName"><span class="PicMiddle"><a href="#" target="_self"><img src="Images/Vip.png" alt="VIP用户" /></a></span>&nbsp;&nbsp;<a href="http://www.baidu.com" target="_self">当前用户：${sessionScope.Manager_Username}</a></div>
-      </div>
-      <!-- <div class="Setting"><a href="http://www.baidu.com" target="_self"></a></div>
-      <div class="Message"><a href="http://www.baidu.com" target="_self"></a></div> -->
-    </div>
-  </div>
-  <div class="Toolbar2">
-    <div class="CentreBox">
-      <div class="Menu">
-        <ul>
-          <li class="Select"><a href="#" target="_blank">火灾报警日志</a></li>
-          <li><a href="#" target="_blank">关于系统</a></li>
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-        <%if(session.getAttribute("type").toString().equals("1")){%>
-          <li><a href="MuseumAdminManager.action" target="_blank">档案馆管理员管理</a></li>
-          <li><a href="RoomAdminManager.action" target="_blank">楼宇管理员管理</a></li>
-          <li><a href="#" target="_blank">库房管理员管理</a></li>
-          <li><a href="PasswordUpdate.jsp" target="_blank">修改密码</a></li>
-          <%}%>
-          <%if(session.getAttribute("type").toString().equals("2")){%> 
-           <li><a href="RoomAdminManager.action" target="_blank">楼宇管理员管理</a></li>
-          <li><a href="#" target="_blank">库房管理员管理</a></li>
-          <li><a href="PasswordUpdate.jsp" target="_blank">修改密码</a></li>
-          <%}%>
-          <li><a href="Quit.action" onclick="return confirm('确定要退出系统吗？')">退出系统</a></li>
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-        <%if(session.getAttribute("type").toString().equals("1")){%>
-          <li class="Select"><a href="BuildingManager.action" target="_blank">楼宇管理</a></li>
-          <li><a href="StorehouseManager.action" target="_blank">库房管理</a></li>
-           <%}%>
-           <%if(session.getAttribute("type").toString().equals("2")){%>
-          <li class="Select"><a href="MyBuildingManager.action" target="_blank">楼宇管理</a></li>
-          <li><a href="MyStorehouseManager.action" target="_blank">库房管理</a></li>
-           <%}%>
-           
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-          <!-- <li class="Select"><a href="#" target="_blank">添加设备</a></li>
-          <li><a href="#" target="_blank">修改设备</a></li> -->
-          <%if(session.getAttribute("type").toString().equals("1")){%>
-          <li><a href="SensorManager.action" target="_blank">查看设备</a></li>
-           <%}%>
-           <%if(session.getAttribute("type").toString().equals("2")){%>
-          <li><a href="MySensorManager.action" target="_blank">查看设备</a></li>
-           <%}%>
-           <li><a href="MotionManager.action" target="_blank">报警设置</a></li>
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-          <li class="Select"><a href="#" target="_blank">显示数据</a></li>
-          <li><a href="#" target="_blank">报警管理</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <%@ include file="left.jsp"%></div>
 </div>
 <table width="80%" height="59%" border="2">
 <tr>
@@ -154,28 +73,45 @@ document.getElementById("time").innerText = msg;
                     <td bgcolor="#D5E4F4"><strong>操作</strong></td>
                    
                   </tr>
-                  <s:iterator id="aa" value="list">
+                  <c:choose>
+  			<c:when test="${not empty requestScope.pageBean3.pageData}">
+  				<c:forEach var="emp" items="${requestScope.pageBean3.pageData}" varStatus="vs">  
                     <tr align="center">
-                      <td height="25" align="center">${Museum_Name}</td>
-                      <td>${Museum_Description}</td>
-                      <td>${Museum_Address}</td>
-                      <td>${Museum_PhoneNumber}</td>
-                      <td>${Museum_Email}</td>
-                      <td align="center">
-                        <a href="MmManager.action?Museum_ID=${Museum_ID}">管理员</a> 
-                        <a href="MuseumUpdate.action?Museum_ID=${Museum_ID}">修改</a> 
-                        <a href="MuseumDel.action?Museum_ID=${Museum_ID}" onClick="return confirm('确定要删除该档案馆吗？')">删除</a>
+                      <td style="height: 25px" align="center">${emp.museum_Name}</td>
+                       <td  align="center">${emp.museum_Description}</td>
+                      <td  align="center">${emp.museum_Address}</td>
+                      <td >${emp.museum_PhoneNumber}</td>
+                      <td>${emp.museum_Email}</td>
+                    <td align="center">
+                        <a href="MmManager.action?Museum_ID=${emp.museum_ID}">管理员</a> 
+                        <a href="MuseumUpdate.action?Museum_ID=${emp.museum_ID}">修改</a> 
+                        <a href="MuseumDel.action?Museum_ID=${emp.museum_ID}" onClick="return confirm('确定要删除该档案馆吗？')">删除</a>
                       </td>
                     </tr>
-                  </s:iterator>
+                      </c:forEach>
+  			</c:when>
+  			<c:otherwise>
+  				<tr align="center">
+  					<td colspan="6" >对不起，没有你要找的数据</td>
+  				</tr>
+  			</c:otherwise>
+  		</c:choose>   
                 </table></td>
             </tr>
           </table>
 </td>                 
  </tr>
+  <tr>
+ <td colspan="6" align="center">
+  				当前${requestScope.pageBean3.currentPage }/${requestScope.pageBean3.totalPage }页     &nbsp;&nbsp;
+  				
+  				<a href="MuseumManager.action?currentPage=1">首页</a>
+  				<a href="MuseumManager.action?currentPage=${requestScope.pageBean3.currentPage-1}">上一页 </a>
+  				<a href="MuseumManager.action?currentPage=${requestScope.pageBean3.currentPage+1}">下一页 </a>
+  				<a href="MuseumManager.action?currentPage=${requestScope.pageBean3.totalPage}">末页</a>
+  			</td>
+ </tr>
  </table>
-
-
     <table height="1%" width="80%">
     <tr>
       <td background="Images/bootBg.jpg" align="center"><span id="time"></span></td>

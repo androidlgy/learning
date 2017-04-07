@@ -40,100 +40,26 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-  <div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%">
   <div class="Toolbar1">
-    <div class="CentreBox">
-      <div class="Logo"><a href="index.jsp" target="_self"><img src="Images/MYLOGO.png" alt="网站名称"/></a></div>
-      <div class="Menu">
-        <ul class="List1">
-     <li class="Select"><a href="CopyOfParaManager.action" target="_self">首页</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">用户管理</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">档案馆管理</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">设备管理</a></li>
-          <li><a href="CopyOfParaManager.action" target="_self">数据管理</a></li>
-          
- 
-        </ul>
-        <ul class="List2">
-          <li><a href="#" target="_blank">企业微博</a></li>
-          <li><a href="#" target="_blank">关于系统</a></li>
-        </ul>
-         
-      </div>
-      <div class="UserInfo">
-        <div class="NickName"><span class="PicMiddle"><a href="#" target="_self"><img src="Images/Vip.png" alt="VIP用户" /></a></span>&nbsp;&nbsp;<a href="http://www.baidu.com" target="_self">当前用户：${sessionScope.Manager_Username}</a></div>
-      </div>
-      <!-- <div class="Setting"><a href="http://www.baidu.com" target="_self"></a></div>
-      <div class="Message"><a href="http://www.baidu.com" target="_self"></a></div> -->
-    </div>
-  </div>
-  <div class="Toolbar2">
-    <div class="CentreBox">
-      <div class="Menu">
-        <ul>
-          <li class="Select"><a href="#" target="_blank">火灾报警日志</a></li>
-          <li><a href="#" target="_blank">关于系统</a></li>
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-        <%if(session.getAttribute("type").toString().equals("1")){%>
-          <li><a href="MuseumAdminManager.action" target="_blank">档案馆管理员管理</a></li>
-          <li><a href="RoomAdminManager.action" target="_blank">楼宇管理员管理</a></li>
-          <li><a href="#" target="_blank">库房管理员管理</a></li>
-          <li><a href="PasswordUpdate.jsp" target="_blank">修改密码</a></li>
-          <%}%>
-          <%if(session.getAttribute("type").toString().equals("2")){%> 
-           <li><a href="RoomAdminManager.action" target="_blank">楼宇管理员管理</a></li>
-          <li><a href="#" target="_blank">库房管理员管理</a></li>
-          <li><a href="PasswordUpdate.jsp" target="_blank">修改密码</a></li>
-          <%}%>
-          <li><a href="Quit.action" onclick="return confirm('确定要退出系统吗？')">退出系统</a></li>
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-        <%if(session.getAttribute("type").toString().equals("1")){%>
-          <li class="Select"><a href="BuildingManager.action" target="_blank">楼宇管理</a></li>
-          <li><a href="StorehouseManager.action" target="_blank">库房管理</a></li>
-           <%}%>
-           <%if(session.getAttribute("type").toString().equals("2")){%>
-          <li class="Select"><a href="MyBuildingManager.action" target="_blank">楼宇管理</a></li>
-          <li><a href="MyStorehouseManager.action" target="_blank">库房管理</a></li>
-           <%}%>
-           
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-          <!-- <li class="Select"><a href="#" target="_blank">添加设备</a></li>
-          <li><a href="#" target="_blank">修改设备</a></li> -->
-          <%if(session.getAttribute("type").toString().equals("1")){%>
-          <li><a href="SensorManager.action" target="_blank">查看设备</a></li>
-           <%}%>
-           <%if(session.getAttribute("type").toString().equals("2")){%>
-          <li><a href="MySensorManager.action" target="_blank">查看设备</a></li>
-           <%}%>
-           <li><a href="MotionManager.action" target="_blank">报警设置</a></li>
-        </ul>
-      </div>
-      <div class="Menu Hide">
-        <ul>
-          <li class="Select"><a href="#" target="_blank">显示数据</a></li>
-          <li><a href="#" target="_blank">报警管理</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <%@ include file="left.jsp"%></div>
 </div>
 <table width="80%" height="59%" border="2">
 <tr>
-<td width="70%">
-<form name="form1" method="post" action="ParaManager.action">
+<td colspan="2">
+<form name="form1" method="post" action="CopyOfParaManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="12%" height="30" style="padding-left:10px;"> <strong>数据显示：</strong></td>
                     <td width="88%">查询：
+                       <%if(session.getAttribute("type").toString().equals("1")){%>                 
+                      <select name="Museum_ID" id="Museum_ID">
+                      <option value="">全部档案馆</option>
+                      <s:iterator value="mlist">
+                      <option value="${Museum_ID}">${Museum_Name}</option>
+                      </s:iterator>
+                      </select>
+                       <%}%>
                       <select name="Storehouse_BuildingID" id="Storehouse_BuildingID">
                       <option value="">全部楼宇</option>
                       <s:iterator value="blist">
@@ -150,34 +76,81 @@ document.getElementById("time").innerText = msg;
                   </tr>
                 </table>
               </form>
-<table width="100%" height="80%" >
+</td>
+</tr>
+<tr>
+<td width="60%" valign="top" height="470">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr align="center">
-                    <td height="25" bgcolor="#D5E4F4"><strong>档案馆</strong></td>
-                    <td height="25" bgcolor="#D5E4F4"><strong>设备名称</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>接收数据时间</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>设备数据</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>单位/符号</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>设备状态</strong></td>
-                     <s:iterator id="aa" value="list">
+                    <td style="height: 25px" bgcolor="#D5E4F4"><strong>档案馆</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>楼宇</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>设备</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>接收时间</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>值</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>单位/符号</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>设备状态</strong></td>                 
+             </tr>
+             <c:choose>
+  			<c:when test="${not empty requestScope.pageBean.pageData}">
+  				<c:forEach var="emp" items="${requestScope.pageBean.pageData}" varStatus="vs">  
                     <tr align="center">
-                      <td height="25" align="center">${Sensor_Name}</td>
-                      <td height="25" align="center">${Sensor_Name}</td>
-                      <td><fmt:formatDate value="${Sensor_ReceiveTime}" type="both"/></td>
-                      <td align="center">${Sensor_Value}</td>
-                      <td align="center">${Sensor_Unit}</td>
-                      <td align="center">${Sensor_Status}</td>
+                      <td style="height: 25px" align="center">${emp.museum_Name}</td>
+                       <td  align="center">${emp.building_Name}</td>
+                      <td  align="center">${emp.sensor_Name}</td>
+                      <td ><fmt:formatDate value="${emp.sensor_ReceiveTime}" type="both"/></td>
+                      <td >${emp.sensor_Value}</td>
+                      <td >${emp.sensor_Unit}</td>
+                      
+                      <td>
+                      <c:if test="${emp.sensor_Status=='true'}">正常</c:if>
+                      <c:if test="${emp.sensor_Status=='false'}">异常</c:if>
+                     </td>
+                      <%-- <td >${emp.sensor_Status}</td> --%>
                     </tr>
-                  </s:iterator>             
-                  </tr>
+                      </c:forEach>
+  			</c:when>
+  			<c:otherwise>
+  				<tr align="center">
+  					<td colspan="6" >对不起，没有你要找的数据</td>
+  				</tr>
+  			</c:otherwise>
+  		</c:choose>                   
 </table>
 </td>                 
- <td width="30%">
- <h6>危险情况日志</h6>
+ <td width="40%" valign="top" >
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <tr align="center">
+                    <td bgcolor="#D5E4F4" style="height: 25px"><strong>近期警报记录</strong></td>
+                    </tr>
+                    
+                     <c:choose>
+  			<c:when test="${not empty requestScope.pageBean1.pageData}">
+  				<c:forEach var="emp1" items="${requestScope.pageBean1.pageData}" varStatus="vs">  
+                    <tr align="center">
+                      <td align="center" style="height: 25px">${emp1.alarm_Thing}</td>
+                    </tr>
+                            </c:forEach>
+  			</c:when>
+  			<c:otherwise>
+  				<tr>
+  					<td colspan="1">对不起，没有你要找的数据</td>
+  				</tr>
+  			</c:otherwise>
+  		</c:choose>      
+                  </table>
  </td>
  </tr>
+ <tr>
+ <td colspan="7" align="center">
+  				当前${requestScope.pageBean.currentPage }/${requestScope.pageBean.totalPage }页     &nbsp;&nbsp;
+  				
+  				<a href="?currentPage=1">首页</a>
+  				<a href="CopyOfParaManager.action?currentPage=${requestScope.pageBean.currentPage-1}">上一页 </a>
+  				<a href="CopyOfParaManager.action?currentPage=${requestScope.pageBean.currentPage+1}">下一页 </a>
+  				<a href="CopyOfParaManager.action?currentPage=${requestScope.pageBean.totalPage}">末页</a>
+  			</td>
+ </tr>
  </table>
-
-
     <table height="1%" width="80%">
     <tr>
       <td background="Images/bootBg.jpg" align="center"><span id="time"></span></td>

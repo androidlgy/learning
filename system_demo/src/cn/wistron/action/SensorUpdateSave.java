@@ -61,7 +61,7 @@ public class SensorUpdateSave {
 		response.setCharacterEncoding("utf-8");
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		PrintWriter out = response.getWriter();
-		if(session.getAttribute("id")==null){
+		if(session.getAttribute("type")==null){
 			out.print("<script language='javascript'>alert('验证不合格，请重新登陆');window.location='Login.jsp'</script>");
 			out.flush();
 			out.close();
@@ -75,6 +75,7 @@ public class SensorUpdateSave {
 			out.close();
 			return null;
 		}
+		else if(session.getAttribute("type").equals("1")){
 		SensorBean bean = new SensorBean();
 		bean.setSensor_ID(Integer.parseInt(Sensor_ID));
 		bean.setSensor_StorehouseID(Integer.parseInt(Sensor_StorehouseID));
@@ -87,6 +88,22 @@ public class SensorUpdateSave {
 		out.print("<script language='javascript'>alert('恭喜你，修改成功');window.location='SensorManager.action'</script>");
 		out.flush();
 		out.close();
+		}
+		else if(session.getAttribute("type").equals("2")){
+			SensorBean bean = new SensorBean();
+			bean.setSensor_ID(Integer.parseInt(Sensor_ID));
+			bean.setSensor_StorehouseID(Integer.parseInt(Sensor_StorehouseID));
+			bean.setSensor_Name(Sensor_Name);
+			bean.setSensor_Type(Sensor_Type);
+			bean.setSensor_Unit(Sensor_Unit);
+			bean.setSensor_Description(Sensor_Description);
+			
+			new SensorDao().Update(bean);
+			//跳转
+			out.print("<script language='javascript'>alert('恭喜你，修改成功');window.location='SensorManager.action'</script>");
+			out.flush();
+			out.close();	
+		}
 		return null;
 		
 	}

@@ -1,28 +1,18 @@
 package cn.wistron.action;
 
 import java.io.PrintWriter;
-import java.util.List;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
-
 import cn.wistron.bean.ManagerBean;
 import cn.wistron.dao.ManagerDao;
-
+import cn.wistron.utils.PageBean;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class MuseumAdminManager extends ActionSupport {
-	private List<ManagerBean> list;
 	private String SearchKey;
 	private String SearchRow;
-	public List<ManagerBean> getList() {
-		return list;
-	}
-	public void setList(List<ManagerBean> list) {
-		this.list = list;
-	}
 	public String getSearchKey() {
 		return SearchKey;
 	}
@@ -42,6 +32,7 @@ public class MuseumAdminManager extends ActionSupport {
 		HttpServletResponse response =null;
 		//避免输出乱码
 	    response=ServletActionContext.getResponse();
+	    HttpServletRequest request = ServletActionContext.getRequest();
 	    response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 	    //获取输出
@@ -58,8 +49,23 @@ public class MuseumAdminManager extends ActionSupport {
 	    if(!isInvalid(SearchKey)){
 	    	strWhere+=" and "+SearchRow+"='"+SearchKey+"'";
 	    }
-	    list = new ManagerDao().getList(strWhere, "Manager_Name");
-	    return SUCCESS;
+	  //1. 获取“当前页”参数；  (第一次访问当前页为null) 
+	  		String currPage=request.getParameter("currentPage");
+	  		//判断
+	  		if(currPage==null||"".equals(currPage.trim())){
+	  			currPage="1";
+	  		}
+	  		//转换
+	  		int currentPage = Integer.parseInt(currPage);
+	  		//2. 创建PageBean对象，设置当前页参数； 传入service方法参数
+	  		PageBean<ManagerBean> pageBean = new PageBean<ManagerBean>();
+	  		pageBean.setCurrentPage(currentPage);
+	  		pageBean.setPageCount(18);
+	  		//3.调用Dao
+	  		new ManagerDao().getAllManager(pageBean, strWhere, "Manager_ID");
+	  		//4.添加到request域中
+	  		request.setAttribute("pageBean", pageBean);
+	        return SUCCESS;
 	    
 		
 	}

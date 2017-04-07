@@ -15,7 +15,7 @@ import cn.wistron.bean.UserBean;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class RoomAdminAdd extends ActionSupport {
+public class BuildingAdminAdd extends ActionSupport {
 	private String User_Username;
 	private String User_Password;
 	private String User_Name;
@@ -84,11 +84,6 @@ public class RoomAdminAdd extends ActionSupport {
 			out.flush();
 			out.close();
 		return SUCCESS;	
-	}
-	
-	//≈–∂œ «∑Òø’÷µ
-	private boolean isInvalid(String value) {
-		return (value == null || value.length() == 0);
 	}
 
 }

@@ -13,7 +13,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class RoomAdminUpdateSave extends ActionSupport {
+public class BuildingAdminUpdateSave extends ActionSupport {
 	//用于封装用户请求的数据
 	private String User_ID;
 	private String User_Username;

@@ -14,8 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/Article.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/Article.js"></script>
-
- <script type="text/javascript">
+<script type="text/javascript">
 setInterval("showTime()",1000);
 
 function showTime()
@@ -41,27 +40,27 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+ <div id="Top" style="width: 80%; height: 10%">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
 <table width="80%" height="59%" border="2">
 <tr>
 <td width="100%">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">档案馆管理员管理</td>
+              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">楼宇管理员管理</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="MuseumAdminManager.action">
+              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="BuildingAdminManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="28%" height="30" style="padding-left:10px;"> 功能导航： <a href="MuseumAdminAdd.jsp">添加档案馆管理员</a></td>
-                    <td width="72%" style="padding-left:20px;">查询：
+                    <td width="28%" height="30" style="padding-left:20px;"> 功能导航： <a href="BuildingAdminAdd.jsp">添加楼宇管理员</a></td>
+                    <td width="72%">查询：
                       <select name="SearchRow" id="SearchRow">
-                        <option value="Manager_Name">姓名</option>
-                        <option value="Manager_Tel">电话</option>
-                        <option value="Manager_Username">用户名</option>
+                        <option value="User_Name">姓名</option>
+                        <option value="User_Tel">电话</option>
+                        <option value="User_Username">用户名</option>
                       </select>
                       <input name="SearchKey" type="text" class="text1" id="SearchKey">
                       <input type="submit" name="button" id="button" value="点击查询"></td>
@@ -76,41 +75,42 @@ document.getElementById("time").innerText = msg;
                     <td bgcolor="#D5E4F4"><strong>用户名</strong></td>
                     <td bgcolor="#D5E4F4"><strong>操作</strong></td>
                   </tr>
-                   <c:choose>
-  			<c:when test="${not empty requestScope.pageBean.pageData}">
-  				<c:forEach var="emp" items="${requestScope.pageBean.pageData}" varStatus="vs">  
+                    <c:choose>
+  			<c:when test="${not empty requestScope.pageBean2.pageData}">
+  				<c:forEach var="emp" items="${requestScope.pageBean2.pageData}" varStatus="vs">  
                     <tr align="center">
-                      <td style="height: 25px" align="center">${emp.manager_Name}</td>
-                       <td  align="center">${emp.manager_Sex}</td>
-                      <td  align="center">${emp.manager_Tel}</td>
-                      <td >${emp.manager_Username}</td>
-                     <td align="center"><a href="MuseumAdminUpdate.action?Manager_ID=${emp.manager_ID}">修改</a> <a href="MuseumAdminDel.action?Manager_ID=${emp.manager_ID}" onClick="return confirm('确定要删除该档案馆管理员吗？')">删除</a></td>
+                      <td style="height: 25px" align="center">${emp.user_Name}</td>
+                       <td  align="center">${emp.user_Sex}</td>
+                      <td  align="center">${emp.user_Tel}</td>
+                      <td >${emp.user_Username}</td>
+                    <td align="center"><a href="BuildingAdminUpdate.action?User_ID=${emp.user_ID}">修改</a> <a href="BuildingAdminDel.action?User_ID=${User_ID}" onClick="return confirm('确定要删除该库房管理员吗？')">删除</a></td>
+                      <%-- <td >${emp.sensor_Status}</td> --%>
                     </tr>
                       </c:forEach>
   			</c:when>
   			<c:otherwise>
   				<tr align="center">
-  					<td colspan="5" >对不起，没有你要找的数据</td>
+  					<td colspan="6" >对不起，没有你要找的数据</td>
   				</tr>
   			</c:otherwise>
-  		</c:choose>   
+  		</c:choose>         
                 </table></td>
             </tr>
           </table>
 </td>                 
  </tr>
  <tr>
- <td colspan="5" align="center">
-  				当前${requestScope.pageBean.currentPage }/${requestScope.pageBean.totalPage }页     &nbsp;&nbsp;
+ <td colspan="6" align="center">
+  				当前${requestScope.pageBean2.currentPage }/${requestScope.pageBean2.totalPage }页     &nbsp;&nbsp;
   				
-  				<a href="MuseumAdminManager.action?currentPage=1">首页</a>
-  				<a href="MuseumAdminManager.action?currentPage=${requestScope.pageBean.currentPage-1}">上一页 </a>
-  				<a href="MuseumAdminManager.action?currentPage=${requestScope.pageBean.currentPage+1}">下一页 </a>
-  				<a href="MuseumAdminManager.action?currentPage=${requestScope.pageBean.totalPage}">末页</a>
+  				<a href="BuildingAdminManager.action?currentPage=1">首页</a>
+  				<a href="BuildingAdminManager.action?currentPage=${requestScope.pageBean2.currentPage-1}">上一页 </a>
+  				<a href="BuildingAdminManager.action?currentPage=${requestScope.pageBean2.currentPage+1}">下一页 </a>
+  				<a href="BuildingAdminManager.action?currentPage=${requestScope.pageBean2.totalPage}">末页</a>
   			</td>
  </tr>
  </table>
-  <table height="1%" width="80%">
+    <table height="1%" width="80%">
     <tr>
       <td background="Images/bootBg.jpg" align="center"><span id="time"></span></td>
     </tr>  	

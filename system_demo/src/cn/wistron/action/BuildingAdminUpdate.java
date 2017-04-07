@@ -12,7 +12,7 @@ import cn.wistron.dao.UserBeanDao;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class RoomAdminUpdate extends ActionSupport{
+public class BuildingAdminUpdate extends ActionSupport{
 	private String User_ID;
 	private UserBean userbean;
 	

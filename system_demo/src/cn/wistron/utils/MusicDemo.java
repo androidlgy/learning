@@ -14,6 +14,14 @@ import sun.audio.*;
  *
  */
 public class MusicDemo {
+	private static MusicDemo ms;
+	public static MusicDemo getInstance(){
+		if(ms!=null){
+			ms=new MusicDemo();
+		}
+		
+		return ms; 
+	}
     
     public static void SoundUtils(String path) throws InterruptedException, IOException{
         // 创建音乐文件输入流对象

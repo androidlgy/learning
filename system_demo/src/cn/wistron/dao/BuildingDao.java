@@ -70,9 +70,45 @@ public class BuildingDao {
 			JdbcUtil1.close(conn, stat);
 		}	
 	}
-	//获取列表
-	public List<BuildingBean> getList(String strwhere,String strorder){
+	//获取列表（系统管理员）
+	public List<BuildingBean> getListAdmin(String strwhere,String strorder){
 		String sql="select * from building,museum where Building_MuseumID=Museum_ID";
+		if(!(isInvalid(strwhere))){
+		sql+=" and "+strwhere;
+		}
+		if(!(isInvalid(strorder))){
+		sql+=" order by "+strorder;
+		}
+		Connection conn =null;
+		Statement stat =null;
+		ResultSet rs =null;
+		List<BuildingBean> list = new ArrayList<BuildingBean>();
+		conn=JdbcUtil1.getConnection();
+		try {
+			
+			stat=conn.createStatement();
+			rs=stat.executeQuery(sql);
+			while(rs.next()){
+				BuildingBean buildingBean = new BuildingBean();
+				buildingBean.setBuilding_ID(rs.getInt("Building_ID"));
+				buildingBean.setBuilding_Name(rs.getString("Building_Name"));
+				buildingBean.setBuilding_Introduction(rs.getString("Building_Introduction"));
+				buildingBean.setBuilding_MuseumID(rs.getInt("Building_MuseumID"));
+				buildingBean.setMuseum_Name(rs.getString("Museum_Name"));
+				list.add(buildingBean);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JdbcUtil1.close(conn, stat, rs);
+		}
+		
+	return list;	
+	}
+	//获取列表(档案馆管理员)
+	public List<BuildingBean> getList(String strwhere,String strorder){
+		String sql="SELECT * FROM building b,museum mu,manager ma,mm mm WHERE b.Building_MuseumID=mu.Museum_ID AND mm.MM_ManagerId=ma.Manager_ID AND mm.MM_MuseumId=mu.Museum_ID";
 		if(!(isInvalid(strwhere))){
 		sql+=" and "+strwhere;
 		}

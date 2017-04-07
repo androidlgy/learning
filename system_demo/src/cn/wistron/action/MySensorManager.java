@@ -72,7 +72,7 @@ public class MySensorManager extends ActionSupport {
 			strwhere+=" and Storehouse_BuildingID="+Storehouse_BuildingID;
 		}
 		blist = new BuildingDao().getList("Building_MuseumID="+session.getAttribute("id"), "Building_Name");
-		slist=new SensorDao().getList(strwhere+" and Building_MuseumID="+session.getAttribute("id"), "Sensor_Name");
+		slist=new SensorDao().getList(strwhere+" and Manager_ID="+session.getAttribute("id"), "Sensor_Name");
 		return SUCCESS;
 	}
 	

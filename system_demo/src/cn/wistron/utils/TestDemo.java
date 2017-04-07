@@ -58,9 +58,10 @@ public class TestDemo {
       
     public void sendPost() throws IOException, JSONException  
     {  
-        String path = "/system_demo/HttpTest1";  
-        String value = URLEncoder.encode("name", "utf-8") + "=" + URLEncoder.encode("gloomyfish", "utf-8") + "&" +  
-                        URLEncoder.encode("age", "utf-8") + "=" + URLEncoder.encode("32", "utf-8");  
+        String path = "/system_demo/HttpTest1.action";  
+        String value ="value=1,59,true;2,54,true;3,76,true;4,65,true;";
+        		/*URLEncoder.encode("name", "utf-8") + "=" + URLEncoder.encode("gloomyfish", "utf-8") + "&" +  
+                        URLEncoder.encode("age", "utf-8") + "=" + URLEncoder.encode("32", "utf-8");*/  
         // String data = "name=zhigang_jia";  
  /*       String sql="select * from sensormanager";
      Connection conn=null;
@@ -86,10 +87,11 @@ public class TestDemo {
         bufferedWriter = new BufferedWriter(streamWriter);  
           
         bufferedWriter.write("POST " + path + " HTTP/1.1\r\n");  
-        bufferedWriter.write("Host: " + this.host + "\r\n");  
+        bufferedWriter.write("Host: " + this.host +":8080"+ "\r\n");  
         bufferedWriter.write("Content-Length: " + value.length() + "\r\n");  
         bufferedWriter.write("Content-Type:application/x-www-form-urlencoded");  
-        bufferedWriter.write("\r\n");  
+        bufferedWriter.write("\r\n"); 
+        bufferedWriter.write("\r\n"); 
         bufferedWriter.write(value);  
         bufferedWriter.flush();  
         bufferedWriter.write("\r\n");  

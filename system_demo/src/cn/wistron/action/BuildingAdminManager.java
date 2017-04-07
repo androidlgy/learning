@@ -3,27 +3,23 @@ package cn.wistron.action;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
+import org.junit.runner.Request;
 
 import cn.wistron.bean.UserBean;
 import cn.wistron.dao.UserBeanDao;
+import cn.wistron.utils.PageBean;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class RoomAdminManager extends ActionSupport {
+public class BuildingAdminManager extends ActionSupport {
 	//封装用户请求的数据
-	private List<UserBean> list;
 	private String SearchRow;
 	private String SearchKey;
-	public List<UserBean> getList() {
-		return list;
-	}
-	public void setList(List<UserBean> list) {
-		this.list = list;
-	}
 	public String getSearchRow() {
 		return SearchRow;
 	}
@@ -41,6 +37,7 @@ public class RoomAdminManager extends ActionSupport {
 		//解决乱码，页面输出
 		HttpServletResponse response=null;
 		response = ServletActionContext.getResponse();
+		HttpServletRequest request = ServletActionContext.getRequest();
 		response.setContentType("text/html;charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
@@ -53,13 +50,33 @@ public class RoomAdminManager extends ActionSupport {
 			out.close();
 			return null;
 		}
-		//查询条件
-		String strWhere="1=1";
-		if(!(isInvalid(SearchKey))){
-			strWhere+=" and "+SearchRow+"='"+SearchKey+"'";
+		else if(session.getAttribute("type").equals("1")){
+			try {
+				//查询条件
+				String strWhere="1=1";
+				if(!(isInvalid(SearchKey))){
+					strWhere+=" and "+SearchRow+"='"+SearchKey+"'";
+				}
+				//1. 获取“当前页”参数；  (第一次访问当前页为null) 
+				String currPage=request.getParameter("currentPage");
+				//判断
+				if(currPage==null||"".equals(currPage.trim())){
+					currPage="1";
+				}
+				//转换
+				int currentPage = Integer.parseInt(currPage);
+				//2. 创建PageBean对象，设置当前页参数； 传入service方法参数
+				PageBean<UserBean> pageBean2 = new PageBean<UserBean>();
+				pageBean2.setCurrentPage(currentPage);
+				pageBean2.setPageCount(18);
+				//3.调用Dao
+				new UserBeanDao().getAllUser(pageBean2, strWhere, "User_ID");
+				//4.保存pageBean对象，到request域中
+				request.setAttribute("pageBean2",pageBean2);				
+			} catch (Exception e) {		
+				throw new RuntimeException(e);
+			}
 		}
-		//查询所有
-		 list = new UserBeanDao().GetList(strWhere,"User_Name");
          return SUCCESS;
 	}
 	

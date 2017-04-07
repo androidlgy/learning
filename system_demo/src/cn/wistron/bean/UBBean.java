@@ -1,5 +1,5 @@
 package cn.wistron.bean;
-//封装管理员和仓库的关系
+//封装管理员和楼宇的关系
 public class UBBean {
 	//封装对象属性
 	private int UB_ID;

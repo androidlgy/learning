@@ -57,6 +57,33 @@ public class SensorDao {
 		
 		
 	}
+	public SensorBean GetFirstBean1(String strwhere){
+		String sql="SELECT * FROM sensormanager,storehouse,building,museum WHERE Sensor_StorehouseID=Storehouse_ID AND Storehouse_BuildingID=Building_ID AND Museum_ID=Building_MuseumID AND "+strwhere;
+		Statement stat = null;
+		ResultSet rs = null;
+		Connection conn = JdbcUtil1.getConnection();
+		SensorBean bean = new SensorBean();
+		try{
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			if(rs.next()){
+				bean.setSensor_ID(rs.getInt("Sensor_ID"));
+				bean.setSensor_StorehouseID(rs.getInt("Sensor_StorehouseID"));
+				bean.setSensor_Name(rs.getString("Sensor_Name"));
+				bean.setSensor_Type(rs.getString("Sensor_Type"));
+				bean.setSensor_Unit(rs.getString("Sensor_Unit"));
+				bean.setSensor_Description(rs.getString("Sensor_Description"));
+				bean.setBuilding_Name(rs.getString("Building_Name"));
+				bean.setStorehouse_Name(rs.getString("Storehouse_Name"));
+				bean.setMuseum_Name(rs.getString("Museum_Name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil1.close(conn, stat, rs);
+		}
+		return bean;
+	}
 	public List<SensorBean> getList(String strwhere,String strorder){
 		String sql="select * from sensormanager,storehouse,building,museum where Sensor_StorehouseID=Storehouse_ID and Storehouse_BuildingID=Building_ID and Museum_ID=Building_MuseumID";
 		
@@ -92,6 +119,7 @@ public class SensorDao {
 				bean.setSensor_ReceiveTime(rs.getTimestamp("Sensor_ReceiveTime"));
 				bean.setSensor_Value(rs.getString("Sensor_Value"));
 				bean.setSensor_Status(rs.getBoolean("Sensor_Status"));
+				bean.setMuseum_Name(rs.getString("museum_Name"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {
@@ -343,7 +371,83 @@ public class SensorDao {
 			
 			//1. 获取当前页： 计算查询的起始行、返回的行数
 			int currentPage = pb.getCurrentPage();
-			int index = (currentPage -1 ) * pb.getPageCount();		// 查询的起始行
+			int index = (currentPage-1) * pb.getPageCount();		// 查询的起始行
+			if(index<0){
+				index=0;
+			}
+			int count = pb.getPageCount();							// 查询返回的行数
+			
+			
+			//3. 分页查询数据;  把查询到的数据设置到pb对象中
+			String sql="SELECT * FROM sensormanager,storehouse,building,museum,manager,mm WHERE Sensor_StorehouseID=Storehouse_ID AND Storehouse_BuildingID=Building_ID AND Museum_ID=Building_MuseumID AND Manager_ID=MM_ManagerId AND MM_MuseumId=Museum_ID";
+			
+			if(!(isInvalid(strwhere)))
+			{
+				sql+=" and "+strwhere;
+			}
+			if(!(isInvalid(strorder)))
+			{
+				sql+=" order by "+strorder;
+			}
+			sql+=" limit ?,?";
+			try {
+				// 得到Queryrunner对象
+				QueryRunner qr = JdbcUtils.getQueryRunner();
+				// 根据当前页，查询当前页数据(一页数据)
+				List<SensorBean> pageData = qr.query(sql, new BeanListHandler<SensorBean>(SensorBean.class), index, count);
+				// 设置到pb对象中
+				pb.setPageData(pageData);
+				
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			
+		}
+		public int getTotalCount(String strwhere) {
+			String sql = "select count(*) from sensormanager,storehouse,building,museum,manager where Sensor_StorehouseID=Storehouse_ID and Storehouse_BuildingID=Building_ID and Museum_ID=Building_MuseumID";
+			if(!(isInvalid(strwhere)))
+			{
+				sql+=" and "+strwhere;
+			}
+			try {
+				// 创建QueryRunner对象
+				QueryRunner qr = JdbcUtils.getQueryRunner();
+				// 执行查询， 返回结果的第一行的第一列
+				Long count = qr.query(sql, new ScalarHandler<Long>());
+				return count.intValue();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
+		
+		//获取所有数据（Admin用户）
+	public void getAllAdmin(PageBean<SensorBean> pb,String strwhere,String strorder) {
+			
+			//2. 查询总记录数;  设置到pb对象中
+			int totalCount = this.getTotalCountAdmin(strwhere);
+			pb.setTotalCount(totalCount);
+			
+			/*
+			 * 问题： jsp页面，如果当前页为首页，再点击上一页报错！
+			 *              如果当前页为末页，再点下一页显示有问题！
+			 * 解决：
+			 * 	   1. 如果当前页 <= 0;       当前页设置当前页为1;
+			 * 	   2. 如果当前页 > 最大页数；  当前页设置为最大页数
+			 */
+			// 判断
+			if (pb.getCurrentPage() <=0) {
+				pb.setCurrentPage(1);					    // 把当前页设置为1
+			}else if (pb.getCurrentPage() > pb.getTotalPage()){
+				pb.setCurrentPage(pb.getTotalPage());		// 把当前页设置为最大页数
+			}
+			
+			//1. 获取当前页： 计算查询的起始行、返回的行数
+			int currentPage = pb.getCurrentPage();
+			int index = (currentPage-1) * pb.getPageCount();		// 查询的起始行
+			if(index<0){
+				index=0;
+			}
 			int count = pb.getPageCount();							// 查询返回的行数
 			
 			
@@ -372,7 +476,7 @@ public class SensorDao {
 			}
 			
 		}
-		public int getTotalCount(String strwhere) {
+		public int getTotalCountAdmin(String strwhere) {
 			String sql = "select count(*) from sensormanager,storehouse,building,museum where Sensor_StorehouseID=Storehouse_ID and Storehouse_BuildingID=Building_ID and Museum_ID=Building_MuseumID";
 			if(!(isInvalid(strwhere)))
 			{

@@ -126,7 +126,7 @@ public class AdminDao {
 		}
 		return cnbean;
 	}
-	
+
 	//Ìí¼Ó
 	public void Add(AdminBean cnbean){
 		String sql="insert into admin(Admin_Username,Admin_Password,Admin_Name,Admin_Sex,Admin_Tel,Admin_Email) values(?,?,?,?,?,?)";

@@ -1,12 +1,11 @@
 package cn.wistron.bean;
-
 import java.util.Date;
-
 public class AlarmBean {
 	private int Alarm_ID;
 	private int Alarm_SensorId;
-	private int Alarm_MuseumId;
-	private int Alarm_BuildingId;
+	private String Alarm_SensorName;
+	private String Alarm_MuseumName;
+	private String Alarm_BuildingName;
 	private Date Alarm_Time;
 	private String Alarm_Thing;
 	private String Alarm_Value;
@@ -22,17 +21,18 @@ public class AlarmBean {
 	public void setAlarm_SensorId(int alarm_SensorId) {
 		Alarm_SensorId = alarm_SensorId;
 	}
-	public int getAlarm_MuseumId() {
-		return Alarm_MuseumId;
+
+	public String getAlarm_MuseumName() {
+		return Alarm_MuseumName;
 	}
-	public void setAlarm_MuseumId(int alarm_MuseumId) {
-		Alarm_MuseumId = alarm_MuseumId;
+	public void setAlarm_MuseumName(String alarm_MuseumName) {
+		Alarm_MuseumName = alarm_MuseumName;
 	}
-	public int getAlarm_BuildingId() {
-		return Alarm_BuildingId;
+	public String getAlarm_BuildingName() {
+		return Alarm_BuildingName;
 	}
-	public void setAlarm_BuildingId(int alarm_BuildingId) {
-		Alarm_BuildingId = alarm_BuildingId;
+	public void setAlarm_BuildingName(String alarm_BuildingName) {
+		Alarm_BuildingName = alarm_BuildingName;
 	}
 	public Date getAlarm_Time() {
 		return Alarm_Time;
@@ -51,6 +51,12 @@ public class AlarmBean {
 	}
 	public void setAlarm_Value(String alarm_Value) {
 		Alarm_Value = alarm_Value;
+	}
+	public String getAlarm_SensorName() {
+		return Alarm_SensorName;
+	}
+	public void setAlarm_SensorName(String alarm_SensorName) {
+		Alarm_SensorName = alarm_SensorName;
 	}
 	
 
