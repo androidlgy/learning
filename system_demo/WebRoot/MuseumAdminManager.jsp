@@ -84,7 +84,7 @@ document.getElementById("time").innerText = msg;
                        <td  align="center">${emp.manager_Sex}</td>
                       <td  align="center">${emp.manager_Tel}</td>
                       <td >${emp.manager_Username}</td>
-                     <td align="center"><a href="MuseumAdminUpdate.action?Manager_ID=${emp.manager_ID}">修改</a> <a href="MuseumAdminDel.action?Manager_ID=${emp.manager_ID}" onClick="return confirm('确定要删除该档案馆管理员吗？')">删除</a></td>
+                     <td align="center"><a href="MuseumAdminUpdate.action?Manager_ID=${emp.manager_ID}">修改</a> <a href="MuseumAdminDel.action?Manager_ID=${emp.manager_ID}" onClick="return confirm('该档案馆下存在楼宇，确定要删除吗？')">删除</a></td>
                     </tr>
                       </c:forEach>
   			</c:when>

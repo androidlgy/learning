@@ -2,34 +2,40 @@ package cn.wistron.action;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import cn.wistron.bean.BuildingBean;
+import cn.wistron.bean.MuseumBean;
 import cn.wistron.bean.SensorBean;
 import cn.wistron.dao.BuildingDao;
+import cn.wistron.dao.MuseumDao;
 import cn.wistron.dao.SensorDao;
+import cn.wistron.utils.PageBean;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 
 public class ParaManager extends ActionSupport {
-	private List<SensorBean> list;
+	/*private List<SensorBean> list;*/
 	private String SearchKey;
 	private String SearchRow;
 	private String Storehouse_BuildingID;
 	private List<BuildingBean> blist;
+	private List<MuseumBean> mlist;
+	private String Museum_ID;
 	
 
-	public List<SensorBean> getList() {
+/*	public List<SensorBean> getList() {
 		return list;
 	}
 
 	public void setList(List<SensorBean> list) {
 		this.list = list;
-	}
+	}*/
 	
 	public String getSearchKey() {
 		return SearchKey;
@@ -64,12 +70,29 @@ public class ParaManager extends ActionSupport {
 		this.blist = blist;
 	}
 
+	public List<MuseumBean> getMlist() {
+		return mlist;
+	}
+
+	public void setMlist(List<MuseumBean> mlist) {
+		this.mlist = mlist;
+	}
+
+	public String getMuseum_ID() {
+		return Museum_ID;
+	}
+
+	public void setMuseum_ID(String museum_ID) {
+		Museum_ID = museum_ID;
+	}
+
 	public String execute() throws Exception{
 	
 	HttpServletResponse response =null;
 	//避免输出乱码
     response=ServletActionContext.getResponse();
     response.setContentType("text/html;charset=UTF-8");
+    HttpServletRequest request = ServletActionContext.getRequest();
 	response.setCharacterEncoding("UTF-8");
     //获取输出
     PrintWriter out = response.getWriter();
@@ -81,17 +104,49 @@ public class ParaManager extends ActionSupport {
     	out.close();
     	return null;
     }
-    String strwhere="1=1";
-    if(!(isInvalid(SearchKey))){
-    	strwhere+=" and "+SearchRow+"='"+SearchKey+"'";
+    if(session.getAttribute("type").equals("1")){
+    	try {
+    		String strwhere="1=1";
+    	    if(!(isInvalid(SearchKey))){
+    	    	strwhere+=" and "+SearchRow+"='"+SearchKey+"'";
+    	    }
+    	    if(!isInvalid(Storehouse_BuildingID)){
+    	    	strwhere+=" and Storehouse_BuildingID="+Storehouse_BuildingID;
+    	    }
+    	    if(!isInvalid(Museum_ID)){
+    	    	strwhere+=" and Museum_ID="+Museum_ID;
+    	    }
+    	    mlist=new MuseumDao().getList("", "Museum_ID");
+    	    blist = new BuildingDao().getList("", "Building_Name");
+    	  //1. 获取“当前页”参数；  (第一次访问当前页为null) 
+    		String currPage = request.getParameter("currentPage");
+    		// 判断
+    		if (currPage == null || "".equals(currPage.trim())){
+    			currPage = "1";  	// 第一次访问，设置当前页为1;
+    		}
+    		// 转换
+    		int currentPage = Integer.parseInt(currPage);
+    		
+    		//2. 创建PageBean对象，设置当前页参数； 传入service方法参数
+    		PageBean<SensorBean> pageBean = new PageBean<SensorBean>();
+    		pageBean.setCurrentPage(currentPage);
+    		//3. 调用Dao
+			new SensorDao().getAllAdmin(pageBean,strwhere,"Sensor_ID");    // 【pageBean已经被dao填充了数据】
+			
+			//4. 保存pageBean对象，到request域中
+			request.setAttribute("pageBean", pageBean);
+			//5. 跳转 
+			return SUCCESS;
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+    
     }
-    if(!isInvalid(Storehouse_BuildingID)){
-    	strwhere+=" and Storehouse_BuildingID="+Storehouse_BuildingID;
+    else if(session.getAttribute("type").equals("1")){
+    	
     }
-    blist = new BuildingDao().getList("", "Building_Name");
-	list=new SensorDao().getList(strwhere, "Sensor_Name");
-	
-	return SUCCESS;
+    return SUCCESS;
 
 }
 	public boolean isInvalid(String str){

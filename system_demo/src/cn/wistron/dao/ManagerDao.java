@@ -137,7 +137,7 @@ public class ManagerDao {
 			rs= stat.executeQuery();
 			while (rs.next()) {
 				museumname=rs.getString("Museum_Name");
-				System.out.println(museumname);
+				//System.out.println(museumname);
 				
 			}	
 		} catch (SQLException e) {

@@ -58,6 +58,14 @@ document.getElementById("time").innerText = msg;
                   <tr>
                     <td width="22%" height="30" style="padding-left:20px;"> 功能导航：</td>
                     <td width="78%">查询：
+                     <%if(session.getAttribute("type").toString().equals("1")){%>                 
+                      <select name="Museum_ID" id="Museum_ID">
+                      <option value="">全部档案馆</option>
+                      <s:iterator value="mlist">
+                      <option value="${Museum_ID}">${Museum_Name}</option>
+                      </s:iterator>
+                      </select>
+                       <%}%>
                       <select name="Storehouse_BuildingID" id="Storehouse_BuildingID">
                       <option value="">全部楼宇</option>
                       <s:iterator value="blist">
@@ -76,15 +84,15 @@ document.getElementById("time").innerText = msg;
               </form>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr align="center"  class="t1">
-                    <td height="25" bgcolor="#D5E4F4"><strong>设备名称</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>接收数据时间</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>设备类型</strong></td>
+                    <td height="25" bgcolor="#D5E4F4"><strong>档案馆</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>设备名称</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>接收数据时间</strong></td>                  
                     <td bgcolor="#D5E4F4"><strong>设备数据</strong></td>
                     <td bgcolor="#D5E4F4"><strong>单位/符号</strong></td>
                     <td bgcolor="#D5E4F4"><strong>设备状态</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>操作</strong></td>
+             <%--        <td bgcolor="#D5E4F4"><strong>操作</strong></td> --%>
                   </tr>
-                  <s:iterator id="aa" value="list">
+                  <%-- <s:iterator id="aa" value="list">
                     <tr align="center">
                       <td height="25" align="center">${Sensor_Name}</td>
                       <td><fmt:formatDate value="${Sensor_ReceiveTime}" type="both"/></td>
@@ -95,12 +103,44 @@ document.getElementById("time").innerText = msg;
                       <td align="center">${Sensor_Status}</td>
                       <td align="center"><a href="ActionManager.action?Sensor_ID=${Sensor_ID}">控制</a> <a href="SensorUpdate.action?Sensor_ID=${Sensor_ID}">修改</a> <a href="SensorDelete.action?Sensor_ID=${Sensor_ID}" onClick="return confirm('确定要删除该宿舍吗？')">删除</a></td>
                     </tr>
-                  </s:iterator>
+                  </s:iterator> --%>
+                  <c:choose>
+                  <c:when test="${not empty requestScope.pageBean.pageData }">
+                  <c:forEach var="emp" items="${requestScope.pageBean.pageData }" varStatus="vs">
+                  <tr align="center">
+                  <%if(session.getAttribute("type").toString().equals("1")){%>
+                  <td height="25px" align="center">${emp.museum_Name}</td>
+                  <%}%>
+                  <td height="25" align="center">${emp.sensor_Name}</td>
+                  <td><fmt:formatDate value="${emp.sensor_ReceiveTime}" type="both"/></td>
+                  <td align="center">${emp.sensor_Value}</td>
+                  <td align="center">${emp.sensor_Unit}</td>
+                  <td align="center">${emp.sensor_Status}</td>
+                  </tr>
+          
+                  </c:forEach>
+                  </c:when>
+                  <c:otherwise>
+                  <tr>
+  					<td colspan="6">对不起，没有你要找的数据</td>
+  				  </tr>
+                  </c:otherwise>
+                  </c:choose>
                 </table></td>
             </tr>
           </table>
 </td>                 
  </tr>
+ <tr>
+<td colspan="3" align="center">
+  				当前${requestScope.pageBean.currentPage }/${requestScope.pageBean.totalPage }页     &nbsp;&nbsp;
+  				
+  				<a href="SensorManager.action?currentPage=1">首页</a>
+  				<a href="SensorManager.action?currentPage=${requestScope.pageBean.currentPage-1}">上一页 </a>
+  				<a href="SensorManager.action?currentPage=${requestScope.pageBean.currentPage+1}">下一页 </a>
+  				<a href="SensorManager.action?currentPage=${requestScope.pageBean.totalPage}">末页</a>
+  			</td>
+</tr>
  </table>
 
 

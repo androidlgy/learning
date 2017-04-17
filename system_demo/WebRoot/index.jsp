@@ -50,8 +50,13 @@ document.getElementById("time").innerText = msg;
 <form name="form1" method="post" action="CopyOfParaManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="12%" height="30" style="padding-left:10px;"> <strong>数据显示：</strong></td>
-                    <td width="88%">查询：
+                  <%if(session.getAttribute("type").toString().equals("1")){%>
+                    <td width="22%" height="30" style="padding-left:10px;"> <strong>数据显示：</strong></td>
+                    <%}%>
+                    <%if(session.getAttribute("type").toString().equals("2")){%>
+                    <td width="22%" height="30" style="padding-left:10px;"> <strong>当前档案馆：${sessionScope.Museum_Name }</strong></td>
+                    <%}%>
+                    <td width="78%">查询：
                        <%if(session.getAttribute("type").toString().equals("1")){%>                 
                       <select name="Museum_ID" id="Museum_ID">
                       <option value="">全部档案馆</option>
@@ -74,6 +79,7 @@ document.getElementById("time").innerText = msg;
                       <input name="SearchKey" type="text" class="text1" id="SearchKey">
                       <input type="submit" name="button" id="button" value="点击查询"></td>
                   </tr>
+                  
                 </table>
               </form>
 </td>
@@ -82,20 +88,32 @@ document.getElementById("time").innerText = msg;
 <td width="60%" valign="top" height="470">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr align="center">
+             <%if(session.getAttribute("type").toString().equals("1")){%>
                     <td style="height: 25px" bgcolor="#D5E4F4"><strong>档案馆</strong></td>
                     <td  bgcolor="#D5E4F4"><strong>楼宇</strong></td>
                     <td  bgcolor="#D5E4F4"><strong>设备</strong></td>
                     <td  bgcolor="#D5E4F4"><strong>接收时间</strong></td>
                     <td  bgcolor="#D5E4F4"><strong>值</strong></td>
                     <td  bgcolor="#D5E4F4"><strong>单位/符号</strong></td>
-                    <td  bgcolor="#D5E4F4"><strong>设备状态</strong></td>                 
+                    <td  bgcolor="#D5E4F4"><strong>设备状态</strong></td>
+                    <%}%> 
+                    <%if(session.getAttribute("type").toString().equals("2")){%>
+                    <td  style="height: 25px" bgcolor="#D5E4F4"><strong>楼宇</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>设备</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>接收时间</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>值</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>单位/符号</strong></td>
+                    <td  bgcolor="#D5E4F4"><strong>设备状态</strong></td>
+                    <%}%>                 
              </tr>
              <c:choose>
   			<c:when test="${not empty requestScope.pageBean.pageData}">
   				<c:forEach var="emp" items="${requestScope.pageBean.pageData}" varStatus="vs">  
                     <tr align="center">
+                    <%if(session.getAttribute("type").toString().equals("1")){%>
                       <td style="height: 25px" align="center">${emp.museum_Name}</td>
-                       <td  align="center">${emp.building_Name}</td>
+                      <%}%> 
+                       <td  style="height: 25px" align="center">${emp.building_Name}</td>
                       <td  align="center">${emp.sensor_Name}</td>
                       <td ><fmt:formatDate value="${emp.sensor_ReceiveTime}" type="both"/></td>
                       <td >${emp.sensor_Value}</td>

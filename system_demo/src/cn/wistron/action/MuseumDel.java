@@ -42,13 +42,24 @@ public class MuseumDel extends ActionSupport {
 		        	out.close();
 		        	return null;
 		        }
+		        int count = new MuseumDao().getTotalBuildingCount("Museum_ID='"+Museum_ID+"'");
+		        if(count==0){
 		        //删除
 		        new MuseumDao().delete(Integer.parseInt(Museum_ID));
 		        //跳转
-		        out.print("<script language='javascript'>alert('删除成功！');window.location='MuseumManager.action'; </script>");
+		        out.print("<script language='javascript'>alert('删除档案馆成功！');window.location='MuseumManager.action'; </script>");
 		        out.flush();
 		        out.close();
 		        return null;
+		        }
+		        else{
+		        	//跳转
+			        out.print("<script language='javascript'>alert('该档案馆下存在楼宇，确定删除？');window.location='MuseumManager.action'; </script>");
+			        out.flush();
+			        out.close();	
+			        return null;
+		        }
+		        
 	}
 	
 

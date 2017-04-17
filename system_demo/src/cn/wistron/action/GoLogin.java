@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 
 import cn.wistron.bean.AlarmBean;
 import cn.wistron.bean.BuildingBean;
+import cn.wistron.bean.ManagerBean;
 import cn.wistron.bean.MuseumBean;
 import cn.wistron.bean.SensorBean;
 import cn.wistron.dao.AdminDao;
@@ -19,6 +20,7 @@ import cn.wistron.dao.BuildingDao;
 import cn.wistron.dao.ManagerDao;
 import cn.wistron.dao.MuseumDao;
 import cn.wistron.dao.SensorDao;
+import cn.wistron.dao.TreasuryDao;
 import cn.wistron.dao.UserBeanDao;
 import cn.wistron.utils.PageBean;
 
@@ -206,6 +208,8 @@ public class GoLogin extends ActionSupport {
 					session.setAttribute("id", Manager_ID);
 					session.setAttribute("type", "2");
 				    session.setAttribute("Manager_Username", Username);
+				    String museumName = new ManagerDao().getMuseumName(Username);
+				    session.setAttribute("Museum_Name",museumName);
 				    try {
 						String strwhere="1=1 and Manager_ID='"+session.getAttribute("id")+"'";
 						if(!isInvalid(SearchKey)){
@@ -277,6 +281,36 @@ public class GoLogin extends ActionSupport {
 					return SUCCESS;
 				}
 			}
+		else if(Type.equals("楼宇管理员")){
+			if(null==new BuildingDao().CheckLogin(Username, Password)){
+				Msg="用户名或密码错误";
+				return INPUT;
+			}
+			else{
+				String User_ID = new UserBeanDao().CheckLogin(Username, Password);
+				session.setAttribute("type","3");
+				session.setAttribute("id", User_ID);
+				session.setAttribute("Manager_Username", Username);
+				
+			}
+			
+			return SUCCESS;
+		}
+		else if(Type.equals("库房管理员")){
+			if(null==new TreasuryDao().CheckLogin(Username, Password)){
+				Msg="用户名或密码错误";
+				return INPUT;
+			}
+			else{
+				String User_ID = new TreasuryDao().CheckLogin(Username, Password);
+				session.setAttribute("type","4");
+				session.setAttribute("id", User_ID);
+				session.setAttribute("Manager_Username", Username);
+				
+			}
+			
+			return SUCCESS;
+		}
 		else{
 			Msg="身份不匹配，请重新输入";
 			return INPUT;

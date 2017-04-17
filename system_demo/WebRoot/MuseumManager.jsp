@@ -52,7 +52,7 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">档案馆管理</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE">
+              <td height="100%" align="center" valign="top" bgcolor="#F6F9FE">
               <form name="form1" method="post" action="MuseumManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>

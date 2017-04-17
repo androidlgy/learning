@@ -83,7 +83,7 @@ public class MuseumAddSave extends ActionSupport {
     //查重
     List<MuseumBean> list = new MuseumDao().getList("Museum_Name='"+Museum_Name+"'","");//修改过
     if(list.size()>0){
-    	out.print("<script language='javascript'>alert('名称已存在！');history.back(-1);</script>");
+    	out.print("<script language='javascript'>alert('该名称的档案馆已存在！');history.back(-1);</script>");
     	out.flush();
     	out.close();
     	return null;
@@ -91,7 +91,7 @@ public class MuseumAddSave extends ActionSupport {
     //添加
     MuseumBean bean = new MuseumBean(Museum_Name, Museum_Description, Museum_Address, Museum_PhoneNumber, Museum_Email);
     new MuseumDao().add(bean);
-    out.print("<script language='javascript'>alert('添加成功！');window.location='MuseumManager.action';</script>");
+    out.print("<script language='javascript'>alert('添加档案馆成功！');window.location='MuseumManager.action';</script>");
     out.flush();
     out.close();
     return null;

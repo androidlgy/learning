@@ -69,6 +69,8 @@ return re.test(str);
                     <option value="">请选择</option>
                     <option value="系统管理员">系统管理员</option>
                     <option value="档案馆管理员">档案馆管理员</option>
+                    <option value="楼宇管理员">楼宇管理员</option>
+                    <option value="库房管理员">库房管理员</option>
                   </select></td>
                   </tr>
                 <tr>

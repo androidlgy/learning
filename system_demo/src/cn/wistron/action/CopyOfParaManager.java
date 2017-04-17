@@ -201,6 +201,9 @@ public class CopyOfParaManager extends ActionSupport {
     }
     else if(session.getAttribute("type").equals("2")){
     	 try {
+    		 String  manager_Username= (String) session.getAttribute("Manager_Username");
+    		 String museumName = new ManagerDao().getMuseumName(manager_Username);
+    		 session.setAttribute("Museum_Name", museumName);
 				String strwhere="1=1 and Manager_ID='"+session.getAttribute("id")+"'";
 				if(!isInvalid(SearchKey)){
 					strwhere+=" and "+SearchRow+"='"+SearchKey+"'";

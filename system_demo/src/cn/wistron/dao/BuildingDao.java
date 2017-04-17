@@ -8,10 +8,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+
 import cn.wistron.bean.BuildingBean;
+import cn.wistron.bean.UserBean;
 import cn.wistron.utils.JdbcUtil1;
+import cn.wistron.utils.JdbcUtils;
 
 public class BuildingDao {
+	private static QueryRunner queryRunner;
+	static{
+		queryRunner= JdbcUtils.getQueryRunner();
+	}
 	//Ôö¼Óbuilding
 	public void add(BuildingBean buildingbean ){
 		String sql="insert into building(Building_Name,Building_Introduction,Building_MuseumID) values(?,?,?)";
@@ -181,6 +190,19 @@ public class BuildingDao {
 	public static void main(String[] args){
 		BuildingBean bean = new BuildingDao().getBean(1);
 		System.out.println(bean.getBuilding_Introduction());
+	}
+	public String CheckLogin(String username, String password) {
+		// TODO Auto-generated method stub
+		String id=null;
+		String sql="select * from user where User_Username=? and User_Password=?";
+		try {
+		UserBean userBean = queryRunner.query(sql,new BeanHandler<UserBean>(UserBean.class), username,password);
+		id=userBean.getUser_ID()+"";
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+		return id;
 	}
 
 }

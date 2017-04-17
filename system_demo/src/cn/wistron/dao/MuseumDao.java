@@ -155,6 +155,23 @@ public class MuseumDao {
 				throw new RuntimeException(e);
 			}
 		}
+		//统计档案馆下楼宇总数
+		public int getTotalBuildingCount(String strwhere) {
+			String sql = "SELECT COUNT(*) FROM museum m,building b WHERE m.Museum_ID=b.Building_MuseumID";
+			if(!(isInvalid(strwhere)))
+			{
+				sql+=" and "+strwhere;
+			}
+			try {
+				// 创建QueryRunner对象
+				QueryRunner qr = JdbcUtils.getQueryRunner();
+				// 执行查询， 返回结果的第一行的第一列
+				Long count = qr.query(sql, new ScalarHandler<Long>());
+				return count.intValue();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
 	//判断是否为空
 	public static boolean isInvalid(String str){
 		return (str==null||str.length()==0);

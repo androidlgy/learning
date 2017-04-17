@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">设备管理</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="SensorManager.action">
+              <td height="100%" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="SensorManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="SensorAdd.action">添加设备</a></td>

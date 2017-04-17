@@ -87,7 +87,7 @@ public class MuseumUpdateSave extends ActionSupport {
 		}
 		List<MuseumBean> list = new MuseumDao().getList("Museum_Name='"+Museum_Name+"' and Museum_ID!='"+Museum_ID+"'", "");
 		if(list.size()>0){
-			out.print("<script language='javascript'>alert('用户名已存在!');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('该名称的档案馆已存在!');history.back(-1);</script>");
 			out.flush();
 			out.close();
 			return null;
@@ -96,7 +96,7 @@ public class MuseumUpdateSave extends ActionSupport {
 		MuseumBean bean =new MuseumBean(Integer.parseInt(Museum_ID), Museum_Name, Museum_Description, Museum_Address, Museum_PhoneNumber, Museum_Email);		
 		new MuseumDao().update(bean);
 		//跳转
-		out.print("<script language='javascript'>alert('修改成功！');window.location='MuseumManager.action';</script>");
+		out.print("<script language='javascript'>alert('修改档案馆成功！');window.location='MuseumManager.action';</script>");
 		out.flush();
 		out.close();
 		return null;
