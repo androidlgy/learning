@@ -6,9 +6,12 @@
 
 
 <struts>
+   <constant name="struts.action.excludePattern" value="/index.jsp"></constant>
 <package name="strutsqs" extends="struts-default" namespace="/">
 	<!--配置请求路径，与处理action类的关系  -->
-	<action name="HttpTest1" class="cn.wistron.action.HttpTest1"></action>
+	<action name="HttpTest1" class="cn.wistron.action.HttpTest1">
+	    <result name="alarm">/SysError.jsp</result>
+	</action>
 		<action name="GoLogin" class="cn.wistron.action.GoLogin">
 			<result name="input">/Login.jsp</result>
 			<result name="success">/index.jsp</result>
@@ -92,6 +95,9 @@
 	    </action>
 	    <action name="MotionManager" class="cn.wistron.action.MotionManager">
 	    <result name="success">/MotionManager.jsp</result>
+	    </action>
+	    <action name="MotionAdd" class="cn.wistron.action.MotionAdd">
+	    <result name="success">/MotionAdd.jsp</result>
 	    </action>
 	    <action name="MotionAddSave" class="cn.wistron.action.MotionAddSave">
 	    </action>
@@ -230,6 +236,12 @@
 		</action>
 		<action name="TSDel" class="cn.wistron.action.TSDel">
 		    <result name="success" type="chain">TSManager</result>
+		</action>
+		<action name="AlarmManager" class="cn.wistron.action.AlarmManager">
+		    <result name="success">/AlarmManager.jsp</result>
+		</action>
+		<action name="HistoryManager" class="cn.wistron.action.HistoryManager">
+		    <result name="success">/HistoryManager.jsp</result>
 		</action>
 </package>
 </struts>

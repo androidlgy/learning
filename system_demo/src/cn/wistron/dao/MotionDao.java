@@ -35,6 +35,7 @@ public class MotionDao {
 				bean.setMotion_Name(rs.getString("Motion_Name"));
 				bean.setMotion_Type(rs.getString("Motion_Type"));
 				bean.setMotion_Msg(rs.getString("Motion_Msg"));
+				bean.setMotion_Wav(rs.getString("Motion_Wav"));
 				list.add(bean);				
 			}
 		} catch (Exception e) {
@@ -64,6 +65,7 @@ public class MotionDao {
 				bean.setMotion_Name(rs.getString("Motion_Name"));
 				bean.setMotion_Type(rs.getString("Motion_Type"));
 				bean.setMotion_Msg(rs.getString("Motion_Msg"));
+				bean.setMotion_Wav(rs.getString("Motion_Wav"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,7 +77,7 @@ public class MotionDao {
 	}
 	//增加动作
 	public void add(MotionBean bean){
-		String sql="insert into motion(Motion_Name,Motion_Type,Motion_Msg) values(?,?,?)";
+		String sql="insert into motion(Motion_Name,Motion_Type,Motion_Msg,Motion_Wav) values(?,?,?,?)";
 		Connection conn =null;
 		PreparedStatement stat=null;
 		try {
@@ -84,6 +86,7 @@ public class MotionDao {
 			stat.setString(1, bean.getMotion_Name());
 			stat.setString(2, bean.getMotion_Type());
 			stat.setString(3, bean.getMotion_Msg());
+			stat.setString(4, bean.getMotion_Wav());
 			stat.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -94,7 +97,7 @@ public class MotionDao {
 	}
 	//修改
 	public void update(MotionBean bean){
-		String sql="update motion set Motion_Name=?,Motion_Type=?,Motion_Msg=? where Motion_ID=?";
+		String sql="update motion set Motion_Name=?,Motion_Type=?,Motion_Msg=?,Motion_Wav=? where Motion_ID=?";
 		Connection conn =null;
 		PreparedStatement stat=null;
 		try {
@@ -103,7 +106,8 @@ public class MotionDao {
 			stat.setString(1, bean.getMotion_Name());
 			stat.setString(2, bean.getMotion_Type());
 			stat.setString(3, bean.getMotion_Msg());
-			stat.setInt(4, bean.getMotion_ID());
+			stat.setString(4, bean.getMotion_Wav());
+			stat.setInt(5, bean.getMotion_ID());
 			stat.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

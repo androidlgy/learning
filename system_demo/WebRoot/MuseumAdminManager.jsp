@@ -33,7 +33,7 @@ document.getElementById("time").innerText = msg;
 </head>
 <body>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width: 1135px;">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -41,11 +41,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="58%" style="border-style: solid;border-width: 2px;min-width: 1135px;">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -53,7 +53,7 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">档案馆管理员管理</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="MuseumAdminManager.action">
+              <td height="470px" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="MuseumAdminManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="28%" height="30" style="padding-left:10px;"> 功能导航： <a href="MuseumAdminAdd.jsp">添加档案馆管理员</a></td>
@@ -84,7 +84,7 @@ document.getElementById("time").innerText = msg;
                        <td  align="center">${emp.manager_Sex}</td>
                       <td  align="center">${emp.manager_Tel}</td>
                       <td >${emp.manager_Username}</td>
-                     <td align="center"><a href="MuseumAdminUpdate.action?Manager_ID=${emp.manager_ID}">修改</a> <a href="MuseumAdminDel.action?Manager_ID=${emp.manager_ID}" onClick="return confirm('该档案馆下存在楼宇，确定要删除吗？')">删除</a></td>
+                     <td align="center"><a href="MuseumAdminUpdate.action?Manager_ID=${emp.manager_ID}">修改</a> <a href="MuseumAdminDel.action?Manager_ID=${emp.manager_ID}" onClick="return confirm('确定要删除该档案馆管理员吗？')">删除</a></td>
                     </tr>
                       </c:forEach>
   			</c:when>

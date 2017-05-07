@@ -32,7 +32,7 @@ document.getElementById("time").innerText = msg;
 </head>
 <body>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width: 1135px">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -40,11 +40,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
- <div id="Top" style="width: 80%; height: 10%">
+ <div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px;">
 <tr>
 <td width="100%">
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -52,7 +52,7 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">楼宇管理员管理</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="BuildingAdminManager.action">
+              <td height="480" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="BuildingAdminManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="28%" height="30" style="padding-left:20px;"> 功能导航： <a href="BuildingAdminAdd.jsp">添加楼宇管理员</a></td>

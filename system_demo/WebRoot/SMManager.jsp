@@ -58,7 +58,7 @@ document.getElementById("time").innerText = msg;
 </script>
 <body>
 <center>
-<table  height="30%" width="80%" >
+<table  height="29%" width="80%" style="min-width:1135px;">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -66,11 +66,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%;min-width: 1135px;">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-width: 2px;border-style: solid;min-width: 1135px;">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -78,13 +78,13 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">设备动作设置</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE">
+             <td height="510px" align="center" valign="top" bgcolor="#F6F9FE">
               <form name="form1" method="post" action="MySMAddSave.action" onsubmit="return mycheck()">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  
                   <tr>
-                    <td width="42%" height="30" style="padding-left:20px;"> 功能导航： <a href="SensorManager.action">返回上层</a></td>
-                           <td width="58%">添加动作:当数据满足以下条件时
+                    <td width="18%" height="30" style="padding-left:20px;"> 功能导航： <a href="SensorManager.action">返回上层</a></td>
+                           <td width="82%">添加动作:当设备<span style="color:red"><s:property value="sbean.Sensor_Name"></s:property></span>的值满足以下条件时
                             <select id="Motion_Operator" name="Motion_Operator">
                               <option value="1">&gt;</option>
                               <option value="2">&ge;</option>
@@ -92,7 +92,7 @@ document.getElementById("time").innerText = msg;
                               <option value="4">&le;</option>
                               <option value="5">==</option>
                             </select>
-                      <input class="text1" type="text" id="Motion_Value" name="Motion_Value" /><br></br>
+                      <input class="text1" type="text" id="Motion_Value" name="Motion_Value" />触发以下动作
                       <select name="SM_MotionID" id="SM_MotionID">
                         <option value="">请选择动作</option>
                         <s:iterator value="molist">

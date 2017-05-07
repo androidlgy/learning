@@ -18,6 +18,7 @@ public class MotionUpdateSave extends ActionSupport {
 	private String Motion_Name;
 	private String Motion_Type;
 	private String Motion_Msg;
+	private String Motion_Wav;
 	
 	public String getMotion_ID() {
 		return Motion_ID;
@@ -42,6 +43,13 @@ public class MotionUpdateSave extends ActionSupport {
 	}
 	public void setMotion_Msg(String motion_Msg) {
 		Motion_Msg = motion_Msg;
+	}
+	
+	public String getMotion_Wav() {
+		return Motion_Wav;
+	}
+	public void setMotion_Wav(String motion_Wav) {
+		Motion_Wav = motion_Wav;
 	}
 	public String execute() throws Exception{
 		   HttpServletResponse response =null;
@@ -71,6 +79,7 @@ public class MotionUpdateSave extends ActionSupport {
 		bean.setMotion_Name(Motion_Name);
 		bean.setMotion_Type(Motion_Type);
 	    bean.setMotion_Msg(Motion_Msg);
+	    bean.setMotion_Wav(Motion_Wav);
 	    new MotionDao().update(bean);
 	    out.print("<script language='javascript'>alert('ÐÞ¸Ä³É¹¦£¡');window.location='MotionManager.action';</script>");
     	out.flush();

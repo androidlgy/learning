@@ -109,12 +109,16 @@ public class ParaManager extends ActionSupport {
     		String strwhere="1=1";
     	    if(!(isInvalid(SearchKey))){
     	    	strwhere+=" and "+SearchRow+"='"+SearchKey+"'";
+    	    	request.setAttribute("sk",SearchKey );
+    	    	request.setAttribute("sr", SearchRow);
     	    }
     	    if(!isInvalid(Storehouse_BuildingID)){
     	    	strwhere+=" and Storehouse_BuildingID="+Storehouse_BuildingID;
+    	    	request.setAttribute("sb", Storehouse_BuildingID);
     	    }
     	    if(!isInvalid(Museum_ID)){
     	    	strwhere+=" and Museum_ID="+Museum_ID;
+    	    	request.setAttribute("m",Museum_ID);
     	    }
     	    mlist=new MuseumDao().getList("", "Museum_ID");
     	    blist = new BuildingDao().getList("", "Building_Name");

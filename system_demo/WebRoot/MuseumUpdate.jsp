@@ -63,7 +63,7 @@ document.getElementById("time").innerText = msg;
 </script>
 <body>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width: 1135px">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -71,11 +71,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -83,37 +83,37 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改档案馆</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="MuseumUpdateSave.action" onSubmit="return mycheck()" >
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <!--  --><td height="510px" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="MuseumUpdateSave.action" onSubmit="return mycheck()" >
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="padding-top: 40px">
                   <tr>
-                    <td width="33%" height="30" align="right">&nbsp;</td>
-                     <td width="67%"><input name="Museum_ID" type="text" class="noshow" id="Museum_ID" value="<s:property value='Mesumbean.Museum_ID'/>"></td>
+                    <td></td>
+                    <td><input name="Museum_ID" type="text" class="noshow" id="Museum_ID" value="<s:property value='Mesumbean.Museum_ID'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>档案馆名称：</td>
+                    <td height="33" align="right" style="padding-left: 90px"><span style="color:red;">*</span>档案馆名称：</td>
                     <td><input name="Museum_Name" type="text" class="text2" id="Museum_Name" value="<s:property value='Mesumbean.Museum_Name'/>"></td>
                   </tr>              
                   <tr>
-                     <td height="30" align="right"><span style="color:red;">*</span>地址：</td>
+                     <td height="33" align="right"><span style="color:red;">*</span>地址：</td>
                     <td><input name="Museum_Address" type="text" class="text2" id="Museum_Address" value='<s:property value='Mesumbean.Museum_Address'/>'>
  </td>
                   </tr>
                       <tr>
-                     <td height="30" align="right"><span style="color:red;">*</span>联系电话：</td>
+                     <td height="33" align="right"><span style="color:red;">*</span>联系电话：</td>
                     <td><input name="Museum_PhoneNumber" type="text" class="text2" id="Museum_PhoneNumber" value='<s:property value='Mesumbean.Museum_PhoneNumber'/>'>
  </td>
                   </tr>
                       <tr>
-                     <td height="30" align="right"><span style="color:red;">*</span>邮箱：</td>
+                     <td height="33" align="right"><span style="color:red;">*</span>邮箱：</td>
                     <td><input name="Museum_Email" type="text" class="text2" id="Museum_Email" value='<s:property value='Mesumbean.Museum_Email'/>'>
  </td>
                   </tr>
                   <tr>
-                    <td height="30" align="right">简介：</td>
-                    <td><textarea name="Museum_Description" id="Museum_Description" cols="45" rows="5" ><s:property value="Mesumbean.Museum_Description"></s:property></textarea></td>
+                    <td height="33" align="right">简介：</td>
+                    <td><textarea name="Museum_Description" id="Museum_Description" cols="25" rows="4" ><s:property value="Mesumbean.Museum_Description"></s:property></textarea></td>
                   </tr>
                   <tr>
-                    <td height="30">&nbsp;</td>
+                    <td height="33">&nbsp;</td>
                     <td><input type="submit" name="button" id="button" value="修改档案馆">
                       &nbsp;&nbsp;
                       <input type="button" name="button2" id="button2" value="返回上页" onClick="javascript:history.back(-1);"></td>

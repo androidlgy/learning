@@ -4,16 +4,37 @@
 * {
 	margin: auto;
 	padding: 0px;
-	font-size: 14px;
-	font-family: "微软雅黑";
+	font-size: 13px;
+	font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
 }
-
+body {
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+    font-size: 13px;
+    color: #262626;
+    background: #f7f8fa;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+table td{border:none;}
+form {
+	margin:0px 0px 0px 0px;/* 相关属性：[ margin-top ] || [ margin-right ] || [ margin-bottom ] || [ margin-left ] 
+	检索或设置对象四边的外延边距。 
+            如果提供全部四个参数值，将按上、右、下、左的顺序作用于四边。 
+            如果只提供一个，将用于全部的四边。 
+            如果提供两个，第一个用于上、下，第二个用于左、右。 
+            如果提供三个，第一个用于上，第二个用于左、右，第三个用于下。 
+           非替代(non-Replaced)行内元素可以使用该属性设置左、右两边的外补丁；若要设置上、下两边的外补丁，必须先使该对象表现为块级或内联块级。 
+           外延边距始终透明
+	*/
+	padding:0px 0px 0px 0px;
+}
 a img{ 
 	border:none;
 }
+
 a{
 	text-decoration:none;
 }
+
 .noshow{ display:none;}/* none： 隐藏对象。与visibility属性的hidden值不同，其不为被隐藏的对象保留其物理空间  */
 .PicMiddle {
 	vertical-align:middle;

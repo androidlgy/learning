@@ -164,11 +164,11 @@ public class CopyOfParaManager extends ActionSupport {
 				}
 				if(!isInvalid(Storehouse_BuildingID)){
 					BuildingBean bean = new BuildingDao().getBean(Integer.parseInt(Storehouse_BuildingID));
-					strwhere+=" and Alarm_BuildingName="+bean.getBuilding_Name();
+					strwhere+=" and Alarm_BuildingName='"+bean.getBuilding_Name()+"'";
 				}
 				if(!isInvalid(Museum_ID)){
 					MuseumBean bean = new MuseumDao().getBean(Integer.parseInt(Museum_ID));
-					strwhere+=" and Alarm_MuseumName="+bean.getMuseum_Name();
+					strwhere+=" and Alarm_MuseumName='"+bean.getMuseum_Name()+"'";
 				}
 				//1. 获取“当前页”参数；  (第一次访问当前页为null) 
 				String currPage = request.getParameter("currentPage");
@@ -206,7 +206,12 @@ public class CopyOfParaManager extends ActionSupport {
     		 session.setAttribute("Museum_Name", museumName);
 				String strwhere="1=1 and Manager_ID='"+session.getAttribute("id")+"'";
 				if(!isInvalid(SearchKey)){
-					strwhere+=" and "+SearchRow+"='"+SearchKey+"'";
+					if(SearchRow.equals("Storehouse_Name")){
+						strwhere+=" and Alarm_StrorehouseName='"+SearchKey+"'";
+					}
+					if(SearchRow.equals("Sensor_Name")){
+						strwhere+=" and Alarm_SensorName='"+SearchKey+"'";
+					}					
 				}
 				if(!isInvalid(Storehouse_BuildingID)){
 					strwhere+=" and Storehouse_BuildingID="+Storehouse_BuildingID;

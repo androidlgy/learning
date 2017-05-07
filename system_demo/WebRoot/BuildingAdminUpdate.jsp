@@ -67,7 +67,7 @@ document.getElementById("time").innerText = msg;
 </script>
 <body>
 <center>
-<table  height="30%" width="80%" >
+<table  height="29%" width="80%" style="min-width: 1135px">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -75,11 +75,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
- <div id="Top" style="width: 80%; height: 10%">
+ <div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -87,33 +87,33 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改楼宇管理员</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE">
+              <td height="510px" align="center" valign="top" bgcolor="#F6F9FE">
               <form name="form1" method="post" action="BuildingAdminUpdateSave.action" onSubmit="return mycheck()" >
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top: 40px;">
                   <tr>
-                    <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%"><input name="User_ID" type="text" class="noshow" id="User_ID" value="<s:property value='userbean.User_ID'/>"></td>
+                    <td></td>
+                    <td><input name="User_ID" type="text" class="noshow" id="User_ID" value="<s:property value='userbean.User_ID'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>用户名：</td>
+                    <td height="33" align="right" style="padding-left: 130px"><span style="color:red;">*</span>用户名：</td>
                     <td><input name="User_Username" type="text" class="text2" id="User_Username" value="<s:property value='userbean.User_Username'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right">密码：</td>
+                    <td height="33" align="right">密码：</td>
                     <td><input name="User_Password" type="password" class="text2" id="User_Password">
                       <span style="color:#F60">不修改则不填写</span></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right">重复密码：</td>
+                    <td height="33" align="right">重复密码：</td>
                     <td><input name="User_Password2" type="password" class="text2" id="User_Password2">
                       <span style="color:#F60">不修改则不填写</span></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>姓名：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>姓名：</td>
                     <td><input name="User_Name" type="text" class="text2" id="User_Name" value="<s:property value='userbean.User_Name'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>性别：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>性别：</td>
                     <td><select name="User_Sex" id="User_Sex">
                       <option value="">请选择</option>
                       <option value="男" 
@@ -127,11 +127,11 @@ document.getElementById("time").innerText = msg;
                     </select></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>联系电话：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>联系电话：</td>
                     <td><input name="User_Tel" type="text" class="text2" id="User_Tel" value="<s:property value='userbean.User_Tel'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30">&nbsp;</td>
+                    <td height="33">&nbsp;</td>
                     <td><input type="submit" name="button" id="button" value="修改楼宇管理员">
                       &nbsp;&nbsp;
                       <input type="button" name="button2" id="button2" value="返回上页" onClick="javascript:history.back(-1);"></td>

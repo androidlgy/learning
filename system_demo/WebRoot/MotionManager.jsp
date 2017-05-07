@@ -34,7 +34,7 @@ document.getElementById("time").innerText = msg;
 </head>
 <body>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width: 1135px">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -42,11 +42,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
- <div id="Top" style="width: 80%; height: 10%">
+ <div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -54,10 +54,10 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">动作管理</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="MotionManager.action">
+              <td height="510px" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="MotionManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="28%" height="30" style="padding-left:20px;"> 功能导航： <a href="MotionAdd.jsp">添加动作</a></td>
+                    <td width="28%" height="30" style="padding-left:20px;"> 功能导航： <a href="MotionAdd.action">添加动作</a></td>
                     <td width="72%">类型： 
                      <select name="SearchKey" id="SearchKey">
                       <option value="邮件">邮件</option>
@@ -73,6 +73,7 @@ document.getElementById("time").innerText = msg;
                   <tr align="center"  class="t1">
                     <td height="25" bgcolor="#D5E4F4"><strong>名称</strong></td>
                     <td bgcolor="#D5E4F4"><strong>类型</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>语音文件名</strong></td>
                     <td bgcolor="#D5E4F4"><strong>内容</strong></td>
                     <td bgcolor="#D5E4F4"><strong>操作</strong></td>
                   </tr>
@@ -80,6 +81,7 @@ document.getElementById("time").innerText = msg;
                     <tr align="center">
                       <td height="25" align="center">${Motion_Name}</td>
                       <td>${Motion_Type}</td>
+                      <td>${Motion_Wav}</td>
                       <td>${Motion_Msg}</td>
                       <td align="center">                
                         <a href="MotionUpdate.action?Motion_ID=${Motion_ID}">修改</a> 

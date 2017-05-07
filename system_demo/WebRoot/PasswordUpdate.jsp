@@ -63,7 +63,7 @@ return re.test(str);
 </script>
 <body>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width: 1135px">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -71,11 +71,11 @@ return re.test(str);
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -83,29 +83,29 @@ return re.test(str);
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改密码</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="PasswordUpdateSave.action" onSubmit="return mycheck()" >
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <td height="510" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="PasswordUpdateSave.action" onSubmit="return mycheck()" >
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="padding-top:40px">
                   <tr>
-                    <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%">&nbsp;</td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>请输入原密码：</td>
+                    <td height="33" align="right" style="padding-left: 50px;"><span style="color:red;">*</span>请输入原密码：</td>
                     <td><input name="Password" type="password" class="text2" id="Password">
                       <%if(request.getAttribute("Msg")!=null){%>
                       <span style="color:red;"><%=request.getAttribute("Msg")%></span>
                       <%}%></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>请输入新密码：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>请输入新密码：</td>
                     <td><input name="Password2" type="password" class="text2" id="Password2"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>请重复新密码：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>请重复新密码：</td>
                     <td><input name="Password3" type="password" class="text2" id="Password3"></td>
                   </tr>
                   <tr>
-                    <td height="30">&nbsp;</td>
+                    <td height="33">&nbsp;</td>
                     <td><input type="submit" name="button" id="button" value="修改密码"></td>
                   </tr>
                 </table>

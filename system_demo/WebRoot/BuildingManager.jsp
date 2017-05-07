@@ -53,7 +53,7 @@ document.getElementById("time").innerText = msg;
 </head>
 <body>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width: 1135px">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -61,11 +61,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -73,10 +73,10 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">楼宇管理</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="BuildingManager.action">
+              <td height="515" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="BuildingManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="28%" height="30" style="padding-left:20px;"> 功能导航： <a href="BuildingAdd.action">添加楼宇</a></td>
+                    <td width="27%" height="30" style="padding-left:20px;"> 功能导航： <a href="BuildingAdd.action">添加楼宇</a></td>
                     <td width="72%">名称：
                       <input name="SearchKey" type="text" class="text1" id="SearchKey">
                       <input type="submit" name="button" id="button"  value="点击查询"></td>
@@ -85,16 +85,16 @@ document.getElementById("time").innerText = msg;
               </form>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr align="center"  class="t1">
-                    <td height="25" bgcolor="#D5E4F4"><strong>档案馆名称</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>名称</strong></td>
+                    <td height="25" bgcolor="#D5E4F4" width="100px"><strong>档案馆名称</strong></td>
+                    <td bgcolor="#D5E4F4" width="200px"><strong>名称</strong></td>
                     <td bgcolor="#D5E4F4"><strong>简介</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>操作</strong></td>
+                    <td bgcolor="#D5E4F4" width="120px"><strong>操作</strong></td>
                   </tr>
                   <s:iterator id="aa" value="list">
                     <tr align="center">
-                    <td height="25" align="center">${Museum_Name}</td>
-                      <td>${Building_Name}</td>
-                      <td>${Building_Introduction}</td>
+                    <td height="45" align="center">${Museum_Name}</td>
+                      <td width="250px">${Building_Name}</td>
+                      <td align="left">${Building_Introduction}</td>
                       <td align="center">
                         <a href="UBManager.action?Building_ID=${Building_ID}">管理员</a> 
                         <a href="BuildingUpdate.action?Building_ID=${Building_ID}">修改</a> 

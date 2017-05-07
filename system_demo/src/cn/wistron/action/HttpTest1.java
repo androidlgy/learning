@@ -1,32 +1,14 @@
 package cn.wistron.action;
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.jar.JarException;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
-import org.junit.runner.Request;
-
-import sun.security.jca.GetInstance;
-
 import cn.wistron.bean.AlarmBean;
 import cn.wistron.bean.Data;
 import cn.wistron.bean.SMBean;
@@ -36,13 +18,13 @@ import cn.wistron.dao.SMDao;
 import cn.wistron.dao.SensorDao;
 import cn.wistron.utils.JdbcUtils;
 import cn.wistron.utils.MusicDemo;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HttpTest1 extends ActionSupport {
 	private String value;
 	private String Sensor_ID= null;
 	private String Sensor_Value=null;
+	private String alarm;
 	public String getValue() {
 		return value;
 	}
@@ -78,6 +60,9 @@ public class HttpTest1 extends ActionSupport {
 		            if(Sensor_Status.equals("正常")){
 		            	Sensor_Status=1+"";
 		            }
+		            else{
+		            	Sensor_Status=0+"";	
+		            }
 		            data.setSensor_Status(Sensor_Status);
 		            Sensor_Value=(String) map.get("Sensor_Value");
 		            data.setSensor_Value(Sensor_Value);
@@ -87,12 +72,15 @@ public class HttpTest1 extends ActionSupport {
 		            if(bean.getMuseum_Name().equals(Museum_Name)&&bean.getStorehouse_Name().equals(Room_Name)){
 		      		    final SMBean smbean = new SMDao().getBean1(Integer.parseInt(Sensor_ID));
 		      		    if(Integer.parseInt(Sensor_ID)==smbean.getSM_SensorID()){
-		      		    if(Integer.parseInt(Sensor_Value)>smbean.getMotion_Value()){
+		      		    	System.out.println(Float.valueOf(Sensor_Value));
+		      		    	System.out.println(smbean.getMotion_Value());
+		      		    if(Float.valueOf(Sensor_Value)>smbean.getMotion_Value()){
 		      		    	AlarmBean alarmBean = new AlarmDao().getBean(Integer.parseInt(Sensor_ID));
 		      		    	alarmBean.setAlarm_Thing(alarmBean.getAlarm_Time()+" "+alarmBean.getAlarm_MuseumName()+" "+alarmBean.getAlarm_BuildingName()+alarmBean.getAlarm_SensorName()+" 参数超过阈值");
+		      		    	/*if(data.getSensor_ReceiveTime()-alarmBean.getAlarm_Time()>30)*/
 		      		    	new AlarmDao().addAlarm(alarmBean);
-						    MusicDemo.getInstance().SoundUtils(smbean.getMotion_Msg());
-
+		      		    /*	MusicDemo.getInstance().SoundUtils(smbean.getMotion_Msg());			*/													
+		      		 
 		      		    }
 		      		    }
 		            	String sql="update sensormanager set Sensor_Value=?,Sensor_ReceiveTime=?,Sensor_Status=? where Sensor_ID=?";

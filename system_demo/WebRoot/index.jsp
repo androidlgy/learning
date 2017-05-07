@@ -7,13 +7,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
  <head>
-    <title>库房环境监测系统</title>
+<title>库房环境监测系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/Article.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/Article.js"></script>
+<script type="text/javascript" src="js/comet4j.js"></script>
+
+<script type="text/javascript">
+function init(){
+        var kbDom = document.getElementById('kb');
+        var obj = document.getElementById('div_video');
+        JS.Engine.on({
+                alarm : function(al){
+                obj.innerHTML=al;
+                if(al!=null){
+                 document.write("<h1 align='center' style='padding-top:80px'>警告</h1>");   
+                 document.write("<p align='center' style='font-size:16px;font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;color:red;width:200x;'>"+al+"</p>"); 
+                //alert(al);
+                }
+                },
+                rootsrc : function(kb){//侦听一个channel
+                        kbDom.innerHTML = kb;
+                        if(kb!=null){
+                                               
+                          document.write("<p align='center'><img src='Images/timg.jpg'/></br><EMBED style='FILTER: invert()' id='sound' src='"+kb+"' width=300 height=50 loop='-1' showcontrols='1' ShowDisplay='0' ShowStatusBar='1'></EMBED></p>");
+                          /* <embed  id='sound 'src='"+kb+"' width=300px height=40px loop='-1' showcontrols='1' ShowDisplay='0' ShowStatusBar='1'></embed> */
+                          document.write("<p align='center' valign='top'></p>");
+                          document.close();
+                          $("#div_video").html(html);//动态改变  
+                          
+                         
+                        }
+                },
+               
+                
+        });
+        // 建立连接，conn 即web.xml中 CometServlet的<url-pattern>
+        JS.Engine.start('conn');
+        JS.Engine.on(
+        'start',function(cId,channelList,engine){
+        	/*   alert('连接已建立，连接ID为：' + cId); */
+        });
+}
+</script>
  <script type="text/javascript">
 setInterval("showTime()",1000);
 
@@ -30,9 +69,10 @@ document.getElementById("time").innerText = msg;
 }
 </script>
 </head> 
-<body>
+<body onload="init()" >
+<div><embed name="musicDemo" src="" id="div_video" loop="11" autostar="true" hidden="true"></embed></div>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width:1135px;">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -40,11 +80,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%;min-width: 1135px;" >
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%"  cellspacing="0" cellpadding="0" style="border-style: solid; border-width: 2px;min-width: 1135px">
 <tr>
 <td colspan="2">
 <form name="form1" method="post" action="CopyOfParaManager.action">
@@ -56,7 +96,7 @@ document.getElementById("time").innerText = msg;
                     <%if(session.getAttribute("type").toString().equals("2")){%>
                     <td width="22%" height="30" style="padding-left:10px;"> <strong>当前档案馆：${sessionScope.Museum_Name }</strong></td>
                     <%}%>
-                    <td width="78%">查询：
+                    <td width="77%">查询：
                        <%if(session.getAttribute("type").toString().equals("1")){%>                 
                       <select name="Museum_ID" id="Museum_ID">
                       <option value="">全部档案馆</option>
@@ -76,7 +116,7 @@ document.getElementById("time").innerText = msg;
                         <option value="Sensor_Name">传感器名称</option>
                         <option value="Sensor_Type">传感器类型</option>
                       </select>
-                      <input name="SearchKey" type="text" class="text1" id="SearchKey">
+                      <input name="SearchKey" type="text" class="text1" id="SearchKey" style="word-wrap:break-word">
                       <input type="submit" name="button" id="button" value="点击查询"></td>
                   </tr>
                   
@@ -85,8 +125,8 @@ document.getElementById("time").innerText = msg;
 </td>
 </tr>
 <tr>
-<td width="60%" valign="top" height="470">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<td width="59%" valign="top" height="475px">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-style: solid; border-width:0px; min-width: 643px;">
 <tr align="center">
              <%if(session.getAttribute("type").toString().equals("1")){%>
                     <td style="height: 25px" bgcolor="#D5E4F4"><strong>档案馆</strong></td>
@@ -106,10 +146,11 @@ document.getElementById("time").innerText = msg;
                     <td  bgcolor="#D5E4F4"><strong>设备状态</strong></td>
                     <%}%>                 
              </tr>
+             
              <c:choose>
   			<c:when test="${not empty requestScope.pageBean.pageData}">
   				<c:forEach var="emp" items="${requestScope.pageBean.pageData}" varStatus="vs">  
-                    <tr align="center">
+                    <tr <c:if test="${vs.count%2==0}">bgcolor="F0F0F0"</c:if> align="center">
                     <%if(session.getAttribute("type").toString().equals("1")){%>
                       <td style="height: 25px" align="center">${emp.museum_Name}</td>
                       <%}%> 
@@ -135,23 +176,22 @@ document.getElementById("time").innerText = msg;
   		</c:choose>                   
 </table>
 </td>                 
- <td width="40%" valign="top" >
- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <td width="40%" valign="top">
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" style="min-width:490px;">
  <tr align="center">
                     <td bgcolor="#D5E4F4" style="height: 25px"><strong>近期警报记录</strong></td>
-                    </tr>
-                    
+
                      <c:choose>
   			<c:when test="${not empty requestScope.pageBean1.pageData}">
   				<c:forEach var="emp1" items="${requestScope.pageBean1.pageData}" varStatus="vs">  
-                    <tr align="center">
+                    <tr <c:if test="${vs.count%2==0}">bgcolor="F0F0F0"</c:if> align="center">
                       <td align="center" style="height: 25px">${emp1.alarm_Thing}</td>
                     </tr>
                             </c:forEach>
   			</c:when>
   			<c:otherwise>
   				<tr>
-  					<td colspan="1">对不起，没有你要找的数据</td>
+  					<td colspan="1" align="center" style="padding-top: 80px"><span style="color:red">您好，近期没有发生危险报警的情况</span></td>
   				</tr>
   			</c:otherwise>
   		</c:choose>      
@@ -169,11 +209,13 @@ document.getElementById("time").innerText = msg;
   			</td>
  </tr>
  </table>
-    <table height="1%" width="80%">
+    <table height="1%" width="80%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td background="Images/bootBg.jpg" align="center"><span id="time"></span></td>
     </tr>  	
   </table >
+ <!--  <div id="kb" type></div> -->
+  <input type="text" class="noshow" id="kb">
   </center>   
 </body>
 </html>

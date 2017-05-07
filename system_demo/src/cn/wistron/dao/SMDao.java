@@ -133,7 +133,7 @@ public class SMDao {
 		
 	}
 	public SMBean getBean1(int id){
-		String sql="select * from sm,motion where SM_SensorID=?";
+		String sql="SELECT * FROM sm,motion WHERE Motion_ID=SM_MotionID AND SM_SensorID=?";
 		Connection conn =null;
 		PreparedStatement stat =null;
 		ResultSet rs =null;

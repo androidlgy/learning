@@ -67,7 +67,7 @@ document.getElementById("time").innerText = msg;
 </script>
 <body>
 <center>
-  <table  height="30%" width="80%" >
+  <table  height="29%" width="80%" style="min-width: 1135px">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -75,11 +75,11 @@ document.getElementById("time").innerText = msg;
   </td>
   </tr>
   </table>
-<div id="Top" style="width: 80%; height: 10%">
+<div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px">
 <tr>
 <td width="100%">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -87,14 +87,10 @@ document.getElementById("time").innerText = msg;
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">添加库房</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="StorehouseAddSave.action" onSubmit="return mycheck()" >
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <td height="515px" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="StorehouseAddSave.action" onSubmit="return mycheck()" >
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="padding-top: 40px">
                   <tr>
-                    <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>楼宇：</td>
+                    <td height="30" align="right" style="padding-left: 120px"><span style="color:red;">*</span>楼宇：</td>
                     <td><select name="Storehouse_BuildingID" id="Storehouse_BuildingID">
                       <option value="">请选择</option>
                       <s:iterator id="aa" value="list">
@@ -103,23 +99,23 @@ document.getElementById("time").innerText = msg;
                       </select></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>库房号：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>库房号：</td>
                     <td><input name="Storehouse_Name" type="text" class="text2" id="Storehouse_Name"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>库房类型：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>库房类型：</td>
                     <td><input name="Storehouse_Type" type="text" class="text2" id="Storehouse_Type"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>传感器数量：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>传感器数量：</td>
                     <td><input name="Storehouse_Number" type="text" class="text2" id="Storehouse_Number"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>电话：</td>
+                    <td height="33" align="right"><span style="color:red;">*</span>电话：</td>
                     <td><input name="Storehouse_Tel" type="text" class="text2" id="Storehouse_Tel"></td>
                   </tr>
                   <tr>
-                    <td height="30">&nbsp;</td>
+                    <td height="33">&nbsp;</td>
                     <td><input type="submit" name="button" id="button" value="添加库房">
                       &nbsp;&nbsp;
                       <input type="button" name="button2" id="button2" value="返回上页" onClick="javascript:history.back(-1);"></td>

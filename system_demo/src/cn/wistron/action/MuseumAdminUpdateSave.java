@@ -71,14 +71,14 @@ public class MuseumAdminUpdateSave extends ActionSupport {
 			}
 			List<ManagerBean> list = new ManagerDao().getList("Manager_Username='"+Manager_Username+"' and Manager_ID !='"+Manager_ID+"'", "");
 			if((list.size())>0){
-				out.print("<script language='javascript'>alert('此用户已经存在！');history.back(-1);</script>");
+				out.print("<script language='javascript'>alert('抱歉，此档案馆管理员已经存在！');history.back(-1);</script>");
 				out.flush();
 				out.close();
 				return null;
 			}
 			ManagerBean bean = new ManagerBean(Integer.parseInt(Manager_ID), Manager_Username, Manager_Password, Manager_Name, Manager_Sex, Manager_Tel);
 		    new ManagerDao().update(bean);
-		    out.print("<script language='javascript'>alert('恭喜，修改成功！');window.location='MuseumAdminManager.action';</script>");
+		    out.print("<script language='javascript'>alert('恭喜，修改档案馆管理员信息成功！');window.location='MuseumAdminManager.action';</script>");
 			return null;
 		}
 }

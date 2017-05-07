@@ -5,6 +5,7 @@ public class MotionBean {
 	private String Motion_Name;
 	private String Motion_Type;
 	private String Motion_Msg;
+	private String Motion_Wav;
 	public int getMotion_ID() {
 		return Motion_ID;
 	}
@@ -30,6 +31,13 @@ public class MotionBean {
 	public void setMotion_Msg(String motion_Msg) {
 		Motion_Msg = motion_Msg;
 	}
+	public String getMotion_Wav() {
+		return Motion_Wav;
+	}
+	public void setMotion_Wav(String motion_Wav) {
+		Motion_Wav = motion_Wav;
+	}
+	
 	
 
 }

@@ -66,7 +66,7 @@ public class MuseumAdminAdd extends ActionSupport {
   		}
   		List<ManagerBean> list = new ManagerDao().getList("Manager_Username='"+Manager_Username+"'", "");
   		if(list.size()>0){
-  			out.print("<script language='javascript'>alert('用户名已存在，请输入新的用户名');history.back(-1)</script>");
+  			out.print("<script language='javascript'>alert('抱歉，该用户名已存在，请输入新的用户名');history.back(-1)</script>");
   			out.flush();
   			out.close();
   			return null;

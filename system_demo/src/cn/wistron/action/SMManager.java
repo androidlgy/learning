@@ -10,8 +10,10 @@ import org.apache.struts2.ServletActionContext;
 
 import cn.wistron.bean.MotionBean;
 import cn.wistron.bean.SMBean;
+import cn.wistron.bean.SensorBean;
 import cn.wistron.dao.MotionDao;
 import cn.wistron.dao.SMDao;
+import cn.wistron.dao.SensorDao;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -19,6 +21,7 @@ public class SMManager extends ActionSupport {
 	private String Sensor_ID;
 	private List<SMBean>  smlist;
 	private List<MotionBean> molist;
+	private SensorBean sbean;
 	public String getSensor_ID() {
 		return Sensor_ID;
 	}
@@ -37,7 +40,14 @@ public class SMManager extends ActionSupport {
 	public void setMolist(List<MotionBean> molist) {
 		this.molist = molist;
 	}
-	//执行execute方法
+	
+	public SensorBean getSbean() {
+		return sbean;
+	}
+	public void setSbean(SensorBean sbean) {
+		this.sbean = sbean;
+	}
+		//执行execute方法
 		public String execute() throws Exception{
 			HttpServletResponse response =null;
 			//避免输出乱码
@@ -56,6 +66,7 @@ public class SMManager extends ActionSupport {
 		    }
 		    molist=  new MotionDao().getList("", "");
 		    smlist= new SMDao().getList("SM_SensorID="+Sensor_ID, "");
+		    sbean = new SensorDao().Getbean(Integer.parseInt(Sensor_ID));
 		    return SUCCESS;
 		    
 

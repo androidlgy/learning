@@ -6,6 +6,7 @@ public class AlarmBean {
 	private String Alarm_SensorName;
 	private String Alarm_MuseumName;
 	private String Alarm_BuildingName;
+	private String Alarm_StorehouseName;
 	private Date Alarm_Time;
 	private String Alarm_Thing;
 	private String Alarm_Value;
@@ -33,6 +34,13 @@ public class AlarmBean {
 	}
 	public void setAlarm_BuildingName(String alarm_BuildingName) {
 		Alarm_BuildingName = alarm_BuildingName;
+	}
+	
+	public String getAlarm_StorehouseName() {
+		return Alarm_StorehouseName;
+	}
+	public void setAlarm_StorehouseName(String alarm_StorehouseName) {
+		Alarm_StorehouseName = alarm_StorehouseName;
 	}
 	public Date getAlarm_Time() {
 		return Alarm_Time;

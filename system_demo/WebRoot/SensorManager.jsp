@@ -16,11 +16,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/Article.js"></script>
     <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0"> 
+<script type="text/javascript">
+setInterval("showTime()",1000);
+
+function showTime()
+{
+var wk = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+var date = new Date();
+var msg = "今天是:" + date.getFullYear()+"年";
+msg += date.getMonth()+1 +"月";
+msg += date.getDate() + "日";
+msg += wk[date.getDay()]+" ";
+msg += date.getHours()+":" + date.getMinutes()+":"+date.getSeconds();
+document.getElementById("time").innerText = msg;
+}
+</script>   
 </head>
 <body>
 <center>
-<table  height="30%" width="80%" >
+<table  height="29%" width="80%" style="min-width: 1135px;">
   <tr>
   <td background="Images/p3.jpg"><h2><font style="font-weight: bold;margin-left: 100px; font-size: 200%">泰德档案库房环境监测信息网</font></h2>
   <br>
@@ -28,23 +43,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </td>
   </tr>
   </table>
- <div id="Top" style="width: 80%; height: 10%">
+ <div id="Top" style="width: 80%; height: 10%;min-width: 1135px">
   <div class="Toolbar1">
     <%@ include file="left.jsp"%></div>
 </div>
-<table width="80%" height="59%" border="2">
+<table width="80%" height="59%" style="border-style: solid;border-width: 2px;min-width: 1135px">
 <tr>
-<td width="100%">
+<td>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">设备管理</td>
+              <td height="30px" background="Images/mainMenuBg.jpg" style="padding-left:25px;">设备管理</td>
             </tr>
             <tr>
-              <td height="100%" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="SensorManager.action">
+              <td height="30px" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="SensorManager.action">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="SensorAdd.action">添加设备</a></td>
-                    <td width="78%">查询:  
+                    <td width="77%">查询:  
                     <%if(session.getAttribute("type").toString().equals("1")){%>                 
                       <select name="Museum_ID" id="Museum_ID">
                       <option value="">全部档案馆</option>
@@ -69,7 +84,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   </tr>
                 </table>
               </form>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              </td>
+              </tr>
+              <tr>
+              <td height="485px" valign="top">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr align="center"  class="t1">
                   <%if(session.getAttribute("type").toString().equals("1")){%>
                     <td height="25" bgcolor="#D5E4F4"><strong>档案馆</strong></td>
@@ -109,18 +128,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			</c:when>
   			<c:otherwise>
   				<tr>
-  					<td colspan="6">对不起，没有你要找的数据</td>
+  					<td colspan="6" align="center" style="padding-top: 50px;"><span style="color:red">对不起，没有您要找的数据</span></td>
   				</tr>
   			</c:otherwise>
   		</c:choose>
   		
-                </table></td>
-            </tr>
-          </table>
+                </table>
+              </td>
+              </tr>
+      </table>
 </td>
 </tr>
 <tr>
-<td colspan="3" align="center">
+<td colspan="6" align="center">
   				当前${requestScope.pageBean.currentPage }/${requestScope.pageBean.totalPage }页     &nbsp;&nbsp;
   				
   				<a href="SensorManager.action?currentPage=1">首页</a>
@@ -129,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<a href="SensorManager.action?currentPage=${requestScope.pageBean.totalPage}">末页</a>
   			</td>
 </tr>
-      </table>
+   </table>
     <table height="1%" width="80%">
     <tr>
       <td background="Images/bootBg.jpg" align="center"><span id="time"></span></td>
